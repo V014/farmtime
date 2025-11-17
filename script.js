@@ -28,13 +28,13 @@ function weatherShowFn(data) {
 	$('#date').text(moment().
 		format('MMMM Do YYYY, h:mm:ss a'));
 	$('#temperature').
-		html(`${data.main.temp}°C`);
+		html(`${Math.round(data.main.temp)}&deg;C`);
 	$('#description').
 		text(data.weather[0].description);
 	$('#wind-speed').
 		html(`Wind Speed: ${data.wind.speed} m/s`);
 	$('#weather-icon').
 		attr('src',
-			`clear_sky.png`);
+			`icons/clear_sky.png`);
 	$('#weather-info').fadeIn();
 }
