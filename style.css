@@ -79,10 +79,15 @@ body {
 
 #wind-speed {
     font-size: 16px;
-    color: rgb(255, 0, 0);
+    color: rgb(34, 34, 34);
 }
 
 #date {
     font-size: 14px;
-    color: rgb(255, 0, 0);
+    color: rgb(34, 34, 34);
+}
+
+#humidity {
+    font-size: 16px;
+    color: rgb(34, 34, 34);
 }

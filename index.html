@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-	<title>GFG App</title>
+	<title>Farm Time</title>
 </head>
 
 <body>
@@ -26,6 +26,8 @@
 				<p id="temperature"></p>
 				<p id="description"></p>
 				<p id="wind-speed"></p>
+				<p id="humidity"></p>
+				<p id="advice"></p>
                 <p id="date"></p>
 			</div>
 		</div>
@@ -35,7 +37,7 @@
 	<script src="https://momentjs.com/downloads/moment.min.js"></script>
 	<script src="script.js"></script>
 	<script>
-		// Move your JavaScript logic here
+		// JavaScript logic here
 		$('#city-input-btn').on('click', function() {
 			let cityName = $('#city-input').val();
 			weatherFn(cityName);
