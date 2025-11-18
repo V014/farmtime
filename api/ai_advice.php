@@ -1,12 +1,21 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-// Replace this with your OpenAI API key or, preferably, load from env or a secure file
-$openai_api_key = 'YOUR_OPENAI_API_KEY_HERE';
+// Gemini (Google Generative) configuration.
+// Prefer setting these as environment variables (e.g., in Apache vhost or system env):
+//   GEMINI_API_KEY and optional GEMINI_MODEL (default: models/gemini-1.0)
 
-if (!$openai_api_key || $openai_api_key === 'YOUR_OPENAI_API_KEY_HERE') {
+$key = getenv('GEMINI_API_KEY');
+if (!$key && file_exists(__DIR__.'/api_key.ini')) {
+    $key = trim(file_get_contents(__DIR__.'/api_key.ini'));
+}
+
+$gemini_api_key = getenv('GEMINI_API_KEY') ?: 'YOUR_GEMINI_API_KEY_HERE';
+$gemini_model = getenv('GEMINI_MODEL') ?: 'models/gemini-1.0';
+
+if (!$gemini_api_key || $gemini_api_key === 'YOUR_GEMINI_API_KEY_HERE') {
     http_response_code(500);
-    echo json_encode(['error' => 'OpenAI API key not configured on server. Please set $openai_api_key in this file or use environment variables.']);
+    echo json_encode(['error' => 'Gemini API key not configured on server. Set GEMINI_API_KEY as an environment variable.']);
     exit;
 }
 
@@ -25,7 +34,7 @@ $humidity = isset($data['humidity']) ? $data['humidity'] : null;
 $wind = isset($data['wind']) ? $data['wind'] : null;
 $description = isset($data['description']) ? $data['description'] : null;
 
-// Build a concise prompt instructing the model how to respond
+// Build prompt
 $prompt = "You are an expert agricultural advisor. Given the following current weather conditions, recommend 5 suitable plants or crops to plant now (or maintain) for the location. For each plant, give one concise reason why it's suitable and any important caveats (soil type, watering, wind sensitivity). Return the answer as short bullet points (one plant per line) and start with a one-line summary recommendation." .
     "\n\nLocation: $city\nTemperature (°C): " . ($temp !== null ? $temp : 'unknown') .
     "\nHumidity (%): " . ($humidity !== null ? $humidity : 'unknown') .
@@ -33,23 +42,24 @@ $prompt = "You are an expert agricultural advisor. Given the following current w
     "\nWeather description: " . ($description !== null ? $description : 'unknown') .
     "\n\nRespond in plain text, maximum 250 words.";
 
+// Build request body according to Google Generative API simple text generation shape
 $postData = [
-    'model' => 'gpt-3.5-turbo',
-    'messages' => [
-        ['role' => 'system', 'content' => 'You are a helpful assistant that provides short, practical planting recommendations.'],
-        ['role' => 'user', 'content' => $prompt]
+    'prompt' => [
+        'text' => $prompt
     ],
     'temperature' => 0.2,
-    'max_tokens' => 500
+    'maxOutputTokens' => 500
 ];
 
-$ch = curl_init('https://api.openai.com/v1/chat/completions');
+// Endpoint: https://generative.googleapis.com/v1/models/{model}:generate?key=API_KEY
+$endpoint = "https://generative.googleapis.com/v1/{$gemini_model}:generate?key={$gemini_api_key}";
+
+$ch = curl_init($endpoint);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    'Content-Type: application/json',
-    'Authorization: Bearer ' . $openai_api_key
+    'Content-Type: application/json'
 ]);
 
 $result = curl_exec($ch);
@@ -64,14 +74,32 @@ if ($err) {
 }
 
 $decoded = json_decode($result, true);
-if (!$decoded || !isset($decoded['choices'][0]['message']['content'])) {
+// Try several common response shapes from Generative APIs
+$advice = null;
+if (is_array($decoded)) {
+    if (isset($decoded['candidates'][0]['content'])) {
+        $advice = $decoded['candidates'][0]['content'];
+    } elseif (isset($decoded['candidates'][0]['output'])) {
+        $advice = $decoded['candidates'][0]['output'];
+    } elseif (isset($decoded['candidates'][0]['text'])) {
+        $advice = $decoded['candidates'][0]['text'];
+    } elseif (isset($decoded['output'])) {
+        // some versions return 'output' directly
+        if (is_string($decoded['output'])) {
+            $advice = $decoded['output'];
+        } elseif (is_array($decoded['output']) && isset($decoded['output'][0]['content'])) {
+            $advice = $decoded['output'][0]['content'];
+        }
+    }
+}
+
+if (!$advice) {
+    // As a fallback, return raw response for debugging
     http_response_code(500);
-    echo json_encode(['error' => 'Invalid response from OpenAI', 'raw' => $result]);
+    echo json_encode(['error' => 'Invalid response from Gemini API', 'raw' => $result]);
     exit;
 }
 
-$advice = trim($decoded['choices'][0]['message']['content']);
-
-echo json_encode(['advice' => $advice]);
+echo json_encode(['advice' => trim($advice)]);
 
 ?>
