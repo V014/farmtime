@@ -24,7 +24,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="msapplication-tap-highlight" content="no">
 	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-	<meta name="color-scheme" content="light dark">
+	<!-- <meta name="color-scheme" content="light dark"> -->
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -39,7 +39,7 @@
 				Farm Time
 			</h1>
 			<h3>
-				Weather App & Advisor
+				Farming Advisor
 			</h3>
 			<input type="text" id="city-input" placeholder="Enter city name">
 			<button id="city-input-btn">Get Weather</button>
