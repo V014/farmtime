@@ -5,11 +5,12 @@ header('Content-Type: application/json; charset=utf-8');
 // Prefer setting these as environment variables (e.g., in Apache vhost or system env):
 //   GEMINI_API_KEY and optional GEMINI_MODEL (default: models/gemini-1.0)
 
-// Read raw value from env or fallback to local file if present
 $raw_env = getenv('GEMINI_API_KEY');
 $raw_file = null;
-if (file_exists(__DIR__ . '/api_key.ini')) {
-    $raw_file = file_get_contents(__DIR__ . '/api_key.ini');
+// Prefer reading keys from the project-level config directory (outside web root)
+$configPath = dirname(dirname(__DIR__)) . '/config/gemini_api_key.ini';
+if (file_exists($configPath)) {
+    $raw_file = file_get_contents($configPath);
 }
 
 $candidate = null;

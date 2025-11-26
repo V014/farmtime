@@ -26,4 +26,5 @@ node_modules/
 /platforms/
 
 # Sensitive files
-www/api/api_key.ini
+config/gemini_api_key.ini
+config/openweathermap_api_key.ini

@@ -1,8 +1,3 @@
-const url =
-	'https://api.openweathermap.org/data/2.5/weather';
-const apiKey =
-	'f00c38e0279b7bc85480c3fe775d518c';
-
 $(document).ready(function () {
 	weatherFn('Pune');
 
@@ -29,18 +24,18 @@ $(document).ready(function () {
 });
 
 async function weatherFn(cName) {
-	const temp =
-		`${url}?q=${cName}&appid=${apiKey}&units=metric`;
 	try {
-		const res = await fetch(temp);
+		const res = await fetch(`api/weather.php?city=${encodeURIComponent(cName)}`);
 		const data = await res.json();
 		if (res.ok) {
 			weatherShowFn(data);
 		} else {
-			alert('City not found. Please try again.');
+			alert(data.error || 'City not found. Please try again.');
+			console.error('Weather API error:', data);
 		}
 	} catch (error) {
 		console.error('Error fetching weather data:', error);
+		alert('Failed to fetch weather data. Check console for details.');
 	}
 }
 
