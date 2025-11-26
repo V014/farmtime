@@ -21,14 +21,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com; media-src *; img-src 'self' data: content:;">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="msapplication-tap-highlight" content="no">
 	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
 	<!-- <meta name="color-scheme" content="light dark"> -->
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/all.min.css">
 	<title>Farm Time</title>
 </head>
 
@@ -60,8 +60,8 @@
 		</div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://momentjs.com/downloads/moment.min.js"></script>
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/moment.min.js"></script>
 	<script src="js/script.js"></script>
 	<script>
 		// JavaScript logic here
