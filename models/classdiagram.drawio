@@ -1,0 +1,58 @@
+<mxfile host="65bd71144e">
+    <diagram id="jQshJy8Eh3_Hb64CX-6Q" name="Page-1">
+        <mxGraphModel dx="844" dy="385" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="users" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="-id: int (PK)&lt;div&gt;-username: varchar (PK)&lt;/div&gt;&lt;div&gt;-password: varchar (PK)&lt;/div&gt;&lt;div&gt;-role: enum (&#39;client&#39;,&#39;farmer&#39;)&lt;/div&gt;&lt;div&gt;-date_registered: datetime&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="2" vertex="1">
+                    <mxGeometry x="10" y="30" width="170" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="user_profile" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="40" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="-id: int (PK)&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;-user_id: int (FK)&lt;br&gt;&lt;/font&gt;&lt;div&gt;-biography: varchar&lt;/div&gt;&lt;div&gt;-contact: varchar&lt;/div&gt;&lt;div&gt;-picture: varchar&lt;/div&gt;&lt;div&gt;-date_updated: datetime&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="4" vertex="1">
+                    <mxGeometry x="10" y="25" width="150" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="plots" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="40" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="-id: int (PK)&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;-user_id: int (FK)&lt;br&gt;&lt;/font&gt;&lt;div&gt;-location: varchar&lt;/div&gt;&lt;div&gt;-size: varchar&lt;/div&gt;&lt;div&gt;-soil_type: varchar&lt;/div&gt;&lt;div&gt;-date_updated: datetime&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="6" vertex="1">
+                    <mxGeometry x="10" y="25" width="150" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="crops" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="320" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="-id: int (PK)&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;-user_id: int (FK)&lt;br&gt;&lt;/font&gt;&lt;div&gt;-plot_id: int&lt;/div&gt;&lt;div&gt;-crop_name: varchar&lt;/div&gt;&lt;div&gt;-crop_metadata: varchar&lt;/div&gt;&lt;div&gt;-date_updated: datetime&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="8" vertex="1">
+                    <mxGeometry x="10" y="25" width="150" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="crop_requirements" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="320" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="-id: int (PK)&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;-user_id: int (FK)&lt;/font&gt;&lt;div&gt;-crop_id: int&lt;/div&gt;&lt;div&gt;-temp_range: varchar&lt;/div&gt;&lt;div&gt;-rainfall: varchar&lt;/div&gt;&lt;div&gt;-soil: varchar&lt;/div&gt;&lt;div&gt;-pH: varchar&lt;/div&gt;&lt;div&gt;-date_updated: datetime&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="10" vertex="1">
+                    <mxGeometry x="10" y="25" width="150" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="weather_cache" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="320" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="-id: int (PK)&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;-location: varchar&lt;/font&gt;&lt;div&gt;-temperature: int&lt;/div&gt;&lt;div&gt;-measuring: Enum (&#39;C&#39;,&#39;F&#39;)&lt;/div&gt;&lt;div&gt;-appearance: varchar&lt;/div&gt;&lt;div&gt;-wind_speed: varchar&lt;/div&gt;&lt;div&gt;-humidity: varchar&lt;/div&gt;&lt;div&gt;-date_time: datetime&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="12" vertex="1">
+                    <mxGeometry x="10" y="35" width="160" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="planting_history" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="600" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="-id: int (PK)&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;-user_id: int (FK)&lt;/font&gt;&lt;div&gt;-temperature: int&lt;/div&gt;&lt;div&gt;-measuring: Enum (&#39;C&#39;,&#39;F&#39;)&lt;/div&gt;&lt;div&gt;-appearance: varchar&lt;/div&gt;&lt;div&gt;-wind_speed: varchar&lt;/div&gt;&lt;div&gt;-humidity: varchar&lt;/div&gt;&lt;div&gt;-date_time: datetime&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="14" vertex="1">
+                    <mxGeometry x="10" y="35" width="160" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="recomendations" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="600" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="-id: int (PK)&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;-user_id: int (FK)&lt;/font&gt;&lt;div&gt;-temperature: int&lt;/div&gt;&lt;div&gt;-measuring: Enum (&#39;C&#39;,&#39;F&#39;)&lt;/div&gt;&lt;div&gt;-appearance: varchar&lt;/div&gt;&lt;div&gt;-wind_speed: varchar&lt;/div&gt;&lt;div&gt;-humidity: varchar&lt;/div&gt;&lt;div&gt;-date_time: datetime&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="16" vertex="1">
+                    <mxGeometry x="10" y="35" width="160" height="130" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
