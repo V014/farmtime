@@ -7,5 +7,4 @@ according the the details returned.
 - CSS
 - JavaScript
 - jQuery
-- PHP
-- MYSQL
+- SQLite
