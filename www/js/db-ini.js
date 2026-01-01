@@ -3,7 +3,7 @@ var db = null;
 document.addEventListener('deviceready', function() {
     // Open (or create) the database
     db = window.sqlitePlugin.openDatabase({
-        name: 'my_app_data.db',
+        name: 'farmtime.db',
         location: 'default', // Essential for Android/iOS
         androidDatabaseProvider: 'system' // Recommended for modern Android
     });
