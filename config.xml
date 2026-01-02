@@ -5,11 +5,11 @@
     <author email="wangakanjala@gmail.com" href="https://www.github.io/v014/farmtime">
         farmtime
     </author>
-    <content src="index.php" />
+    <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <platform name="android">
-        <!-- <preference name="android-minSdkVersion" value="31" /> -->
+        <preference name="android-minSdkVersion" value="31" />
         <preference name="android-targetSdkVersion" value="36" />
     </platform>
 </widget>
