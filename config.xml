@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+<widget id="com.farmtime" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>FarmTime</name>
     <description>farmtime plantation advisor</description>
     <author email="wangakanjala@gmail.com" href="https://www.github.io/v014/farmtime">
         farmtime
@@ -8,4 +8,8 @@
     <content src="index.php" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <platform name="android">
+        <!-- <preference name="android-minSdkVersion" value="31" /> -->
+        <preference name="android-targetSdkVersion" value="36" />
+    </platform>
 </widget>
