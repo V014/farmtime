@@ -173,7 +173,7 @@ button:focus {
   box-sizing: border-box;
   height: 560px;
   width: 360px;
-  background: #fff;
+  background: transparent;
   /* background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823') top left no-repeat; */
 }
 
@@ -186,6 +186,7 @@ button:focus {
   position: absolute;
   width: 360px;
   z-index: 1;
+  border-radius: 10px;
 }
 
 @media (max-width: 500px) {
