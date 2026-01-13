@@ -3,7 +3,7 @@
     <name>FarmTime</name>
     <description>farmtime plantation advisor</description>
     <author email="wangakanjala@gmail.com" href="https://www.github.io/v014/farmtime">
-        farmtime
+        Wanga kanjala
     </author>
     <content src="index.html" />
     <allow-intent href="http://*/*" />
