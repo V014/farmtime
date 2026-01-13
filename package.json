@@ -20,12 +20,14 @@
       "cordova-plugin-camera": {
         "ANDROIDX_CORE_VERSION": "1.6.+"
       },
-      "cordova-plugin-contacts": {}
+      "cordova-plugin-contacts": {},
+      "cordova-sqlite-storage": {}
     }
   },
   "devDependencies": {
     "cordova-android": "^14.0.1",
     "cordova-plugin-camera": "^8.0.0",
-    "cordova-plugin-contacts": "^3.0.1"
+    "cordova-plugin-contacts": "^3.0.1",
+    "cordova-sqlite-storage": "^7.0.0"
   }
 }
