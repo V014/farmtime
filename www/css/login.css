@@ -117,7 +117,8 @@ button:focus {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background: url('../img/login-background.jpg') no-repeat center center fixed;
+  background: url('../img/weather.jpg') no-repeat center center fixed;
+  background-size: cover;
   height: 100%;
 }
 
