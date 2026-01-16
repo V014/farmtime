@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="css/login.css">
+    <title>Signup</title>
+    <link rel="stylesheet" href="css/authentication.css">
     <link rel="stylesheet" href="css/authentication.css">
 </head>
 <body>
@@ -14,12 +14,12 @@
             <div class='content'>
                 <div class='welcome'>Signup</div>
                 <div class='subtitle'>Before using our services you need to Signup.</div>
-                <form action="js/signup.js" method="post">
+                <form action="" method="post">
                     <div class='input-fields'>
-                        <input type='text' placeholder='Username' class='input-line full-width' id="username"></input>
-                        <input type='password' placeholder='Password' class='input-line full-width' id="password"></input>
-                        <input type='text' placeholder='Contact Number' class='input-line full-width' id="contact_number"></input>
-                        <input type='text' placeholder='Address' class='input-line full-width' id="address"></input>
+                        <input type='text' placeholder='Username' class='input-line full-width' id="username" required></input>
+                        <input type='password' placeholder='Password' class='input-line full-width' id="password" required></input>
+                        <input type="tel" placeholder='Contact Number' class='input-line full-width' id="contact_number" pattern="^(09|08)\d{8}$" title="Phone number must start with 09 or 08 and be exactly 10 digits long." required></input>
+                        <input type='text' placeholder='Address' class='input-line full-width' id="address" required></input>
                     </div>
                     <div class='spacing'>Back to <span class='highlight'><a href="index.html">login</a></span></div>
                     <div><button class='ghost-round full-width' type="submit">Signup</button></div>
