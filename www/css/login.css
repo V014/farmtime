@@ -21,14 +21,14 @@ button:focus {
   color: #fff;
 }
 
-.highlight {
+.highlight a{
   color: rgba(255, 255, 255, 0.8);
   font-weight: 400;
   cursor: pointer;
   transition: color .2s ease;
 }
 
-.highlight:hover {
+.highlight:hover a{
   color: #fff;
   transition: color .2s ease;
 }
@@ -175,14 +175,17 @@ button:focus {
   box-sizing: border-box;
   height: 560px;
   width: 360px;
-  background: transparent;
   /* background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823') top left no-repeat; */
 }
 
 .overlay {
-  background: -webkit-linear-gradient(#8CA6DB, #B993D6);
-  background: linear-gradient(#8CA6DB, #B993D6);
-  opacity: 0.85;
+  /* background: -webkit-linear-gradient(#8CA6DB, #B993D6); */
+  /* background: linear-gradient(#8CA6DB, #B993D6); */
+  background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 10;
   filter: alpha(opacity=85);
   height: 560px;
   position: absolute;
