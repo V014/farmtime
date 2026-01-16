@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class='container'>
+        <div class='window'>
+            <div class='overlay'></div>
+            <div class='content'>
+                <img src="img/leaf-light.png" alt="Farm time logo" class="logo">
+                <div class='welcome'>Login</div>
+                <div class='subtitle'>Before using our services you need to login.</div>
+                <form action="js/login.js" method="post">
+                    <div class='input-fields'>
+                        <input type='text' placeholder='Username' class='input-line full-width' id="username"></input>
+                        <input type='password' placeholder='Password' class='input-line full-width' id="password"></input>
+                    </div>
+                    <div class='spacing'>or register <span class='highlight'><a href="register.html">Here</a></span></div>
+                    <div><button class='ghost-round full-width' type="submit">Login</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
