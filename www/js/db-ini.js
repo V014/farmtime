@@ -15,7 +15,7 @@ document.addEventListener('deviceready', function() {
     db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS settings (id integer primary key, key text, value text, date_update text)');
         tx.executeSql('CREATE TABLE IF NOT EXISTS users (id integer primary key, username text, password text, role text, date_registered text)');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS user_profile (id integer primary key, user_id integer, email text, contact integer, picture text, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id))');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS user_profile (id integer primary key, user_id integer, email text, contact integer, address text, picture text, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS crops (id integer primary key, user_id integer, crop_name text, crop_metadata text, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS plots (id integer primary key, user_id integer, name text, area real, location text, soil_type text, date_created text, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(crop_id) REFERENCES crops(id))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS crop_requirements (id integer primary key, user_id, crop_id integer, season text, temp_range text, rainfall integer, soil text, pH integer, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(crop_id) REFERENCES crops(id))');
