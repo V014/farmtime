@@ -8,3 +8,20 @@ according the the details returned.
 - JavaScript
 - jQuery
 - SQLite
+
+Useful commands
+# setting a platform
+cordova platform remove android
+cordova platform add android
+# running the app
+cordova run android --device
+adb connect localhost:6520
+# Prepare the project to sync config.xml changes
+cordova prepare android
+# List all available emulators
+cordova emulate android --list
+adb devices
+# Add the core SQLite plugin
+cordova plugin add cordova-sqlite-storage
+# Standard debug build
+cordova build android
