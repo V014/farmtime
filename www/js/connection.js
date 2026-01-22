@@ -23,7 +23,9 @@ document.addEventListener('deviceready', function() {
         tx.executeSql('CREATE TABLE IF NOT EXISTS weather_cache (id integer primary key, user_id integer, location text, temperature integer, measuring text, appearance text, wind_speed integer, humidity integer, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id))')
     }, function(error) {
         console.error('Initialization Error: ' + error.message);
+        alert("Initialization Error! : " + error.message);
     }, function() {
         console.log('Database and Tables Ready!');
+        alert("Database and Tables Ready!");
     });
 }, false);

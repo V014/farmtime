@@ -8,7 +8,7 @@ function onDeviceReady() {
     db = window.sqlitePlugin.openDatabase({name: 'farmtime.db', location: 'default'});
 
     // Attach the click event to your button
-    document.getElementById('loginBtn').addEventListener('click', handleSignup);
+    document.getElementById('signupBtn').addEventListener('click', handleSignup);
 }
 
 function handleSignup() {
@@ -19,7 +19,7 @@ function handleSignup() {
 
     db.transaction(function(tx) {
         tx.executeSql('INSERT INTO Users (username, password, contact_number, address) VALUES (?, ?, ?, ?)', [user, pass, contact, address], function(tx, res) {
-            // alert("Signup successful! User ID: " + res.insertId);
+            alert("Signup successful! User ID: " + res.insertId);
             window.location.href = "client/index.html"; // Move to the next page
         });
     }, function(error) {
