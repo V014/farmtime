@@ -9,6 +9,7 @@ function onDeviceReady() {
 
     // Attach the click event to your button
     document.getElementById('loginBtn').addEventListener('click', handleLogin);
+    document.getElementById('signupBtn').addEventListener('click', handleSignup);
 }
 
 function handleLogin() {
