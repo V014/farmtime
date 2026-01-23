@@ -47,6 +47,6 @@ document.addEventListener('deviceready', function() {
         alert("Initialization Error! : " + error.message);
     }, function() {
         console.log('Database and Tables Ready!');
-        alert("Database and Tables Ready!");
+        // alert("Database and Tables Ready!");
     });
 }, false);
