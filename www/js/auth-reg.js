@@ -21,7 +21,7 @@ function handleLogin() {
         tx.executeSql('SELECT * FROM users WHERE username=? AND password=?', [user, pass], function(tx, results) {
             if (results.rows.length > 0) {
                 // alert("Login Successful!");
-                window.location.href = "../client/index.html"; // Move to the next page
+                window.location.href = "../farmer/index.html"; // Move to the next page
             } else {
                 alert("Invalid username or password.");
             }
@@ -41,7 +41,7 @@ function handleSignup() {
             const userId = res.insertId;
             tx.executeSql('INSERT INTO user_profile (user_id, contact, address, date_updated) VALUES (?, ?, ?, ?)', [userId, contact, address, now], function(tx, res2) {
                 // alert("Signup successful! User ID: " + userId);
-                window.location.href = "../client/index.html"; // Move to the next page
+                window.location.href = "../farmer/index.html"; // Move to the next page
             }, function(tx, error) {
                 alert("Signup failed: " + error.message);
             });
