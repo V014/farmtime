@@ -8143,11 +8143,7 @@ textarea.form-control-lg {
 
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-image: url('../img/lemons.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right;
-  /* background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important; */
+    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-secondary {
@@ -8227,6 +8223,13 @@ textarea.form-control-lg {
 
 .bg-gradient {
   background-image: var(--bs-gradient) !important;
+}
+
+.bg-crops {
+  background-image: url('../img/lemons.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
 }
 
 .user-select-all {
