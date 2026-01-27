@@ -8232,6 +8232,27 @@ textarea.form-control-lg {
   background-position: right;
 }
 
+.bg-clients {
+  background-image: url('../img/client.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.bg-harvest {
+  background-image: url('../img/harvest.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.bg-alert {
+  background-image: url('../img/alert.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 .user-select-all {
   -webkit-user-select: all !important;
      -moz-user-select: all !important;
