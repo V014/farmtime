@@ -52,13 +52,6 @@
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
-                        </div>
                         <!-- form -->
                         <div class="card mb-4">
                             <div class="card-body">
@@ -85,9 +78,6 @@
                                     <div class="form-group mb-2">
                                         <label for="poster">Upload poster</label>
                                         <input name="poster" type="file" class="form-control" id="poster" accept="image/*" required>
-                                        @error('poster')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
 
                                     <p>Click upload to finalize your actions.</p>
@@ -124,8 +114,6 @@
         <script src="../cordova.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
