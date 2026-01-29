@@ -64,25 +64,25 @@ CREATE TABLE crop_variety (
 );
 
 CREATE TABLE supplier (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     supplier_name TEXT NOT NULL,
-    contact INTEGER,
-    address TEXT,
+    contact INTEGER  NOT NULL,
+    address TEXT  NOT NULL,
     date_registered DATE DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE crop (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     plot_id INTEGER NOT NULL,
     crop_variety_id INTEGER NOT NULL,
     supplier_id INTEGER,
-    crop_type TEXT, -- enum
-    intercropping TEXT, -- enum
+    crop_type TEXT NOT NULL, -- enum
+    intercropping TEXT NOT NULL, -- enum
     batch_id TEXT,
-    growth_stage TEXT, -- enum
-    status TEXT, -- enum
-    date_registered DATETIME DEFAULT CURRENT_TIMESTAMP,
-    date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+    growth_stage TEXT NOT NULL, -- enum
+    status TEXT NOT NULL, -- enum
+    date_registered DATETIME NOT NULL,
+    date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (plot_id) REFERENCES plot(id),
     FOREIGN KEY (crop_variety_id) REFERENCES crop_variety(id),
     FOREIGN KEY (supplier_id) REFERENCES supplier(id)
@@ -90,50 +90,53 @@ CREATE TABLE crop (
 
 -- 4. Farm Activities and Recommendations
 CREATE TABLE activity (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     crop_id INTEGER NOT NULL,
-    activity_type TEXT, -- enum
-    labor_type TEXT, -- e.g., 'Family', 'Ganyu'
+    activity_type TEXT NOT NULL, -- enum
+    labor_type TEXT NOT NULL, -- e.g., 'Family', 'Ganyu'
     cost_mwk INTEGER,
     input_quantity INTEGER,
-    input_unit TEXT,
-    date_recorded DATETIME DEFAULT CURRENT_TIMESTAMP,
+    input_unit TEXT NOT NULL,
+    date_recorded DATETIME NOT NULL,
+    date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (crop_id) REFERENCES crop(id) ON DELETE CASCADE
 );
 
 CREATE TABLE recommendation (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     crop_id INTEGER NOT NULL,
     remarks TEXT,
-    date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (crop_id) REFERENCES crop(id)
 );
 
 -- 5. Harvest and Weather
 CREATE TABLE harvest (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     crop_id INTEGER NOT NULL,
-    quantity INTEGER,
-    unit TEXT, -- e.g., '50kg Bag'
-    storage_type TEXT,
-    quality_grade TEXT,
-    planting_date DATE,
-    harvest_date DATE,
+    quantity INTEGER NOT NULL,
+    unit TEXT NOT NULL, -- e.g., '50kg Bag'
+    storage_type TEXT NOT NULL,
+    quality_grade TEXT NOT NULL,
+    planting_date DATE NOT NULL,
+    harvest_date DATE NOT NULL,
     market_price_mwk INTEGER,
-    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date_recorded DATETIME NOT NULL,
+    date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (crop_id) REFERENCES crop(id)
 );
 
 CREATE TABLE weather_cache (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     field_id INTEGER NOT NULL,
-    location TEXT,
-    temperature_celsius INTEGER,
-    rainfall_mm INTEGER,
-    wind_speed INTEGER,
-    humidity INTEGER,
-    date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+    location TEXT NOT NULL,
+    temperature_celsius INTEGER NOT NULL,
+    rainfall_mm INTEGER NOT NULL,
+    wind_speed INTEGER NOT NULL,
+    humidity INTEGER NOT NULL,
+    date_recorded DATETIME NOT NULL,
+    date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (field_id) REFERENCES Field(id) ON DELETE CASCADE
 );
