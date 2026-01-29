@@ -35,12 +35,12 @@ document.addEventListener('deviceready', function() {
     // Initialize your tables
     db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS settings (id integer primary key, key text, value text, date_update text)');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS users (id INTEGER NOT NULL primary key, username TEXT NOT NULL, password TEXT NOT NULL, role TEXT NOT NULL, date_registered TEXT NOT NULL, date_updated TEXT NOT NULL)');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS user_profile (id integer primary key, user_id integer, email text, contact integer, address text, picture text, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id))');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS crops (id integer primary key, user_id integer, crop_name text, crop_metadata text, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id))');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS plots (id integer primary key, user_id integer, crop_id integer, name text, area text, location text, soil_type text, date_created text, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(crop_id) REFERENCES crops(id))');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS crop_requirements (id integer primary key, user_id integer, crop_id integer, season text, temp_range text, rainfall integer, soil text, pH integer, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(crop_id) REFERENCES crops(id))');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS recommendations (id integer primary key, user_id integer, crop_id integer, recommendation text, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(crop_id) REFERENCES crops(id))');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS user (id INTEGER NOT NULL primary key, username TEXT NOT NULL, password TEXT NOT NULL, role TEXT NOT NULL, date_registered TEXT NOT NULL, date_updated TEXT NOT NULL)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS user_profile (id INTEGER NOT NULL primary key, user_id INTEGER NOT NULL, email TEXT, contact INTEGER, address INTEGER, picture TEXT, date_updated TEXT, FOREIGN KEY(user_id) REFERENCES user(id))');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS crops (id integer primary key, user_id integer, crop_name text, crop_metadata text, date_updated text, FOREIGN KEY(user_id) REFERENCES user(id))');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS plots (id integer primary key, user_id integer, crop_id integer, name text, area text, location text, soil_type text, date_created text, date_updated text, FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(crop_id) REFERENCES crops(id))');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS crop_requirements (id integer primary key, user_id integer, crop_id integer, season text, temp_range text, rainfall integer, soil text, pH integer, date_updated text, FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(crop_id) REFERENCES crops(id))');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS recommendations (id integer primary key, user_id integer, crop_id integer, recommendation text, date_updated text, FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(crop_id) REFERENCES crops(id))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS weather_cache (id integer primary key, user_id integer, location text, temperature integer, measuring text, appearance text, wind_speed integer, humidity integer, date_updated text, FOREIGN KEY(user_id) REFERENCES users(id))')
     }, function(error) {
         console.error('Initialization Error: ' + error.message);
