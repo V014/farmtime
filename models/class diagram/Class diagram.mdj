@@ -4176,6 +4176,23 @@
 										},
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGcC1CCo62Uxh8=",
+											"_parent": {
+												"$ref": "AAAAAAGcBAoKvD0Sjoo="
+											},
+											"model": {
+												"$ref": "AAAAAAGcC1CCka2Fnk8="
+											},
+											"font": "Arial;13;0",
+											"left": 781,
+											"top": 892,
+											"width": 160.7861328125,
+											"height": 13,
+											"text": "-common_pests: text",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAGcCPzCum0cZ0E=",
 											"_parent": {
 												"$ref": "AAAAAAGcBAoKvD0Sjoo="
@@ -4185,7 +4202,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 781,
-											"top": 892,
+											"top": 907,
 											"width": 160.7861328125,
 											"height": 13,
 											"text": "-treatment: text",
@@ -4202,7 +4219,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 781,
-											"top": 907,
+											"top": 922,
 											"width": 160.7861328125,
 											"height": 13,
 											"text": "-date_recorded: datetime",
@@ -4219,7 +4236,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 781,
-											"top": 922,
+											"top": 937,
 											"width": 160.7861328125,
 											"height": 13,
 											"text": "-date_updated: datetime",
@@ -4230,7 +4247,7 @@
 									"left": 776,
 									"top": 737,
 									"width": 170.7861328125,
-									"height": 203
+									"height": 218
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -4243,7 +4260,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 776,
-									"top": 940,
+									"top": 955,
 									"width": 170.7861328125,
 									"height": 10
 								},
@@ -4285,7 +4302,7 @@
 							"left": 776,
 							"top": 712,
 							"width": 170.7861328125,
-							"height": 238,
+							"height": 253,
 							"nameCompartment": {
 								"$ref": "AAAAAAGcBAoKvD0NPQs="
 							},
@@ -7419,6 +7436,16 @@
 							"name": "yield_estimate",
 							"visibility": "private",
 							"type": "int"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGcC1CCka2Fnk8=",
+							"_parent": {
+								"$ref": "AAAAAAGcBAoKvD0KSw0="
+							},
+							"name": "common_pests",
+							"visibility": "private",
+							"type": "text"
 						},
 						{
 							"_type": "UMLAttribute",
