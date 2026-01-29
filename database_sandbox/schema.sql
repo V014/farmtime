@@ -28,7 +28,8 @@ CREATE TABLE Field (
     area_unit TEXT, -- e.g., 'Hectares', 'Acres'
     soil_type TEXT, -- enum handled as text
     tenure_type TEXT, -- e.g., 'Customary', 'Leasehold'
-    date_recorded DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date_recorded DATETIME DEFAULT,
+    date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
@@ -38,7 +39,7 @@ CREATE TABLE plot (
     plot_name TEXT,
     area_size INTEGER,
     area_unit TEXT,
-    date_recorded DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date_recorded DATETIME DEFAULT,
     date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (field_id) REFERENCES Field(id) ON DELETE CASCADE
 );
