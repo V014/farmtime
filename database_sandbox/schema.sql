@@ -11,8 +11,9 @@ CREATE TABLE user (
 CREATE TABLE user_profile (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
-    biography TEXT NOT NULL,
+    biography TEXT,
     contact INTEGER NOT NULL,
+    email TEXT,
     address TEXT NOT NULL,
     date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
