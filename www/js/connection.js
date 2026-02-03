@@ -34,15 +34,18 @@ document.addEventListener('deviceready', function() {
     // If the tables already exist, does nothing, and moves to the "Success" callback
     // Initialize your tables
     db.transaction(function(tx) {
+        // 1. User Management Tables
         tx.executeSql('CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT, key text, value text, date_update text)');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, role TEXT NOT NULL, date_registered DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_profile (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, email TEXT, contact INTEGER, address TEXT, picture TEXT, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(user_id) REFERENCES user(id))');
+        // 2. Farm Management Tables
         tx.executeSql('CREATE TABLE IF NOT EXISTS Field (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, field_name TEXT NOT NULL, area_size INTEGER NOT NULL, location TEXT NOT NULL, area_unit TEXT NOT NULL, soil_type TEXT NOT NULL, tenure_type TEXT NOT NULL, date_recorded DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(user_id) REFERENCES user(id))');
-
         tx.executeSql('CREATE TABLE IF NOT EXISTS plot (id INTEGER NOT NULL PIMARY KEY AUTOINCREMENT, field_id INTEGER NOT NULL, plot_name TEXT NOT NULL, area_size INTEGER NOT NULL, area_unit TEXT NOT NULL, date_recorded DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(field_id) REFERENCES field(id))');
+        // 3. Crop Management Tables
+        tx.executeSql('CREATE TABLE IF NOT EXISTS crop_variety (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, crop_name TEXT NOT NULL, crop_variety TEXT NOT NULL, availabilty TEXT NOT NULL, pH_requirement INTEGER, temperature_celsius INTEGER, rainfall_mm INTEGER, season_requirement TEXT NOT NULL, maturity_rate INTEGER, yield_estimate INTEGER, yield_unit TEXT, common_pests TEXT, treatment TEXT NOT NULL, date_recorded DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)');
         tx.executeSql('CREATE TABLE IF NOT EXISTS crop (id INTEGER NOT NULL primary key AUTOINCREMENT, user_id INTEGER NOT NULL, crop_type TEXT NOT NULL, crop_variety TEXT NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(user_id) REFERENCES user(id))');
-        
         tx.executeSql('CREATE TABLE IF NOT EXISTS crop_requirements (id integer primary key AUTOINCREMENT, user_id integer, crop_id integer, season text, temp_range text, rainfall integer, soil text, pH integer, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(crop_id) REFERENCES crop(id))');
+
         tx.executeSql('CREATE TABLE IF NOT EXISTS recommendations (id integer primary key AUTOINCREMENT, user_id integer, crop_id integer, recommendation text, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(crop_id) REFERENCES crop(id))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS weather_cache (id integer primary key AUTOINCREMENT, user_id integer, location text, temperature integer, measuring text, appearance text, wind_speed integer, humidity integer, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(user_id) REFERENCES user(id))')
     }, function(error) {
