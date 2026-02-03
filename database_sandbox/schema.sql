@@ -51,9 +51,12 @@ CREATE TABLE crop_variety (
     crop_name TEXT NOT NULL,
     crop_variety TEXT NOT NULL,
     availability TEXT NOT NULL, -- enum
-    pH_requirement INTEGER,
-    temperature_celsius INTEGER,
-    rainfall_mm INTEGER,
+    pH_requirement_min INTEGER,
+    pH_requirement_max INTEGER,
+    temperature_min_celsius INTEGER,
+    temperature_max_celsius INTEGER,
+    rainfall_min_mm INTEGER,
+    rainfall_max_mm INTEGER,
     season_requirement TEXT NOT NULL, -- enum
     maturity_rate INTEGER, -- Days to harvest
     yield_estimate INTEGER,
