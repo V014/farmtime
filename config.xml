@@ -9,9 +9,13 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <platform name="android">
-        <!-- <preference name="android-compileSdkVersion" value="30" /> -->
+        <!-- Sets the android targets  -->
         <preference name="android-targetSdkVersion" value="36" />
         <preference name="android-minSdkVersion" value="30" /> 
+        <!-- Prevents blurring on high-resolution devices. -->
+        <icon src="res/icon/android/ldpi.png" density="ldpi" />
+        <icon src="res/icon/android/mdpi.png" density="mdpi" />
+        <icon src="res/icon/android/hdpi.png" density="hdpi" />
     </platform>
     <icon src="res/icon/icon.png /">
 </widget>
