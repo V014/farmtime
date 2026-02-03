@@ -17,5 +17,4 @@
         <icon src="res/icon/android/mdpi.png" density="mdpi" />
         <icon src="res/icon/android/hdpi.png" density="hdpi" />
     </platform>
-    <icon src="res/icon/icon.png /">
 </widget>
