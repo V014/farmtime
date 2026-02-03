@@ -69,7 +69,8 @@ CREATE TABLE supplier (
     supplier_name TEXT NOT NULL,
     contact INTEGER  NOT NULL,
     address TEXT  NOT NULL,
-    date_registered DATE DEFAULT CURRENT_DATE
+    date_registered DATETIME NOT NULL,
+    date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE crop (
