@@ -70,29 +70,80 @@
                                     <div class="form-group mb-2">
                                         <label for="availability">Availability</label>
                                         <select id="availability" class="form-control">
-                                            <option value="default">Unknown</option>
+                                            <option value="default">Unspecified</option>
                                             <option value="available">Available</option>
                                             <option value="out_of_stock">Out of stock</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group mb-2">
-                                        <label for="pH_requirement">pH Requirement</label>
-                                        <input type="text" id="pH_requirement" class="form-control" placeholder="e.g. 423-Kanyani" required>
+                                        <label for="pH_requirement">pH Minimum</label>
+                                        <input type="number" id="pH_requirement_min" class="form-control" placeholder="e.g. 5.5" required>
                                     </div>
-
-                                    <!-- Hidden field where FilePond will store file_id -->
-                                    <input type="hidden" name="file_id" id="file_id">
 
                                     <div class="form-group mb-2">
-                                        <label for="poster">Upload poster</label>
-                                        <input name="poster" type="file" class="form-control" id="poster" accept="image/*" required>
+                                        <label for="pH_requirement_min">pH Maximum</label>
+                                        <input type="number" id="pH_requirement_max" class="form-control" placeholder="e.g. 6.5" required>
                                     </div>
 
-                                    <p>Click upload to finalize your actions.</p>
+                                    <div class="form-group mb-2">
+                                        <label for="temprerature_min">Temperature Minimum (Celsius)</label>
+                                        <input type="number" id="temperature_min" class="form-control" placeholder="e.g. 25" required>
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="temperature_max">Temperature Maximum (Celsius)</label>
+                                        <input type="number" id="temperature_max" class="form-control" placeholder="e.g. 27" required>
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="rainfall_min">Rainfall Minimum (mm)</label>
+                                        <input type="number" id="rainfall_min" class="form-control" placeholder="e.g. 300" required>
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="rainfall_max">Rainfall Maximum (mm)</label>
+                                        <input type="number" id="rainfall_max" class="form-control" placeholder="e.g. 500" required>
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="season_requirement">Season requirement</label>
+                                        <select id="season_requirement" class="form-control">
+                                            <option value="default">Unspecified</option>
+                                            <option value="default">Cool and dry</option>
+                                            <option value="default">Cool and wet</option>
+                                            <option value="available">Hot and dry</option>
+                                            <option value="out_of_stock">Hot and wet</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="yeild_estimate">Yield estimate</label>
+                                        <input type="number" id="yeild_estimate" class="form-control" placeholder="e.g. 500" required>
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="yield_unit">Yield unit</label>
+                                        <select id="yield_unit" class="form-control">
+                                            <option value="default">Unspecified</option>
+                                            <option value="default">Kg</option>
+                                            <option value="default">Mg</option>
+                                            <option value="available">Bags</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="common_pests">Common pests</label>
+                                        <textarea id="common_pests" rows="3" class="form-control" placeholder="e.g. Army worms, weevils"></textarea>
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="treatment">Treatment</label>
+                                        <textarea id="treatment" rows="3" class="form-control" placeholder="e.g. Fertilizer, pesticide, pruning"></textarea>
+                                    </div>
 
                                     <div class="form-group">
-                                        <button id="addCropBtn" class="btn btn-primary mb-2">Add crop</button>
+                                        <button id="addCropVarietyBtn" class="btn btn-primary mb-2">Add crop variety</button>
                                     </div>
                                 </form>
 

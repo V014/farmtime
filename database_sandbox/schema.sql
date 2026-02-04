@@ -51,8 +51,8 @@ CREATE TABLE crop_variety (
     crop_name TEXT NOT NULL,
     crop_variety TEXT NOT NULL,
     availability TEXT NOT NULL, -- enum
-    pH_requirement_min INTEGER,
-    pH_requirement_max INTEGER,
+    pH_min REAL,
+    pH_max REAL,
     temperature_min_celsius INTEGER,
     temperature_max_celsius INTEGER,
     rainfall_min_mm INTEGER,
