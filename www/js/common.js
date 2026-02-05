@@ -96,8 +96,24 @@ $(document).ready(function() {
         </div>
     `;
 
-    // Define repetitive HTML in a variable
+    // Define main footer template
     const footerTemplate = `
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">FarmTime &copy;</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    `;
+
+    // Define repetitive HTML in a variable
+    const footerRootTemplate = `
         <div id="layoutAuthentication_footer">
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -116,6 +132,7 @@ $(document).ready(function() {
 
     // 1. Inject it into the placeholder
     $('#footer-placeholder').html(footerTemplate);
+    $('#footer-placeholder-root').html(footerRootTemplate);
     $('#nav-placeholder').html(navTemplate);
     $('#header-placeholder').html(headerTemplate);
 
