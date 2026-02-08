@@ -50,8 +50,6 @@ document.addEventListener('deviceready', function() {
         tx.executeSql('CREATE TABLE IF NOT EXISTS recommendations (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, crop_id INTEGER NOT NULL, remarks TEXT, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(crop_id) REFERENCES crop(id))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS harvest (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,crop_id INTEGER NOT NULL, quantity INTEGER NOT NULL, unit TEXT NOT NULL, storage_type TEXT NOT NULL, quality_grade TEXT NOT NULL, planting_date DATE NOT NULL, harvest_date DATE NOT NULL, market_price_mwk INTEGER, date_recorded DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(crop_id) REFERENCES crop(id))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS weather_cache (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, field_id INTEGER NOT NULL, location TEXT NOT NULL, temperature_celsius INTEGER NOT NULL,rainfall_mm INTEGER NOT NULL, wind_speed INTEGER NOT NULL, humidity INTEGER NOT NULL, date_recorded DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(field_id) REFERENCES field(id))');
-        // 5. Insert crop variety test data
-        tx.executeSql('INSERT INTO crop_variety VALUES (1, "Maize", "403-Kanyani", "Available", 5.5, 6.5, 25, 27, 300, 500, "Rainy Season", 90, 500, "bags/ha", "Fall Armyworm", "Use recommended pesticides and practice crop rotation.", datetime("now"), datetime("now"))');
     }, function(error) {
         console.error('Initialization Error: ' + error.message);
         alert("Initialization Error! : " + error.message);
