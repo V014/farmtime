@@ -29,10 +29,16 @@ function addCropVariety() {
     const planting_distance = document.getElementById('planting_distance').value;
 
     db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO crop_variety (crop_name, crop_variety, crop_availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_recommendation, irrigation_needs, planting_distance) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [crop_name, crop_variety, crop_availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_recommendation, irrigation_needs, planting_distance], function(tx, res) {
-            alert("Crop variety added successfully! ID: " + res.insertId);
-            // go back to crop variety list page
-            window.location.href = "../farmer/crop_variety.html";
-        });
+        try {
+            tx.executeSql('INSERT INTO crop_variety (crop_name, crop_variety, crop_availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_recommendation, irrigation_needs, planting_distance) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [crop_name, crop_variety, crop_availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_recommendation, irrigation_needs, planting_distance], function(tx, res) {
+                alert("Crop variety added successfully!");
+                // go back to crop variety list page
+                window.location.href = "../farmer/crop_variety.html";
+            });
+        } catch (error) {
+            alert("Error adding crop variety: " + error.message);
+            // go back to add crop variety page
+            window.location.href = "../farmer/add_crop_variety.html";
+        }
     });
 }

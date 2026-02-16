@@ -53,8 +53,8 @@ CREATE TABLE crop_variety (
     availability TEXT NOT NULL, -- enum
     pH_min REAL,
     pH_max REAL,
-    temperature_min_celsius INTEGER,
-    temperature_max_celsius INTEGER,
+    temp_min INTEGER,
+    temp_max INTEGER,
     rainfall_min_mm INTEGER,
     rainfall_max_mm INTEGER,
     season_requirement TEXT NOT NULL, -- enum
@@ -62,7 +62,11 @@ CREATE TABLE crop_variety (
     yield_estimate INTEGER,
     yield_unit TEXT, -- e.g., 'kg per hectare'
     common_pests TEXT,
-    treatment TEXT NOT NULL,
+    common_diseases TEXT,
+    soil_type TEXT NOT NULL, -- enum
+    fertilizer_recommendation TEXT,
+    irrigation_needs TEXT NOT NULL, -- enum
+    planting_distance TEXT NOT NULL, -- e.g., '30cm x 30cm'
     date_recorded DATETIME NOT NULL,
     date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
