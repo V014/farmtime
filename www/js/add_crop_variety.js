@@ -28,10 +28,11 @@ function addCropVariety() {
     const irrigation_needs = document.getElementById('irrigation_needs').value;
     const planting_distance = document.getElementById('planting_distance').value;
 
-    de.transaction(function(tx) {
+    db.transaction(function(tx) {
         tx.executeSql('INSERT INTO crop_variety (crop_name, crop_variety, crop_availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_recommendation, irrigation_needs, planting_distance) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [crop_name, crop_variety, crop_availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_recommendation, irrigation_needs, planting_distance], function(tx, res) {
             alert("Crop variety added successfully! ID: " + res.insertId);
-            // Optionally clear the form or redirect
-            document.getElementById('crop_form').reset();
+            // go back to crop variety list page
+            window.location.href = "../farmer/crop_variety.html";
         });
     });
+}
