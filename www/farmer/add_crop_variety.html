@@ -16,7 +16,7 @@
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <button type="button" class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -58,7 +58,7 @@
                                 <b>To add a crop variety, fill in all the fields below.</b>
                                 <form>
                                     <div class="form-group mb-2">
-                                        <label for="crop_type">Crop name</label>
+                                        <label for="crop_name">Crop name</label>
                                         <input type="text" id="crop_name" class="form-control" placeholder="e.g. Maize" required>
                                     </div>
 
@@ -78,22 +78,22 @@
 
                                     <div class="form-group mb-2">
                                         <label for="pH_requirement">pH Minimum</label>
-                                        <input type="number" id="pH_requirement_min" class="form-control" placeholder="e.g. 5.5" required>
+                                        <input type="number" id="pH_min" class="form-control" placeholder="e.g. 5.5" required>
                                     </div>
 
                                     <div class="form-group mb-2">
                                         <label for="pH_requirement_min">pH Maximum</label>
-                                        <input type="number" id="pH_requirement_max" class="form-control" placeholder="e.g. 6.5" required>
+                                        <input type="number" id="pH_max" class="form-control" placeholder="e.g. 6.5" required>
                                     </div>
 
                                     <div class="form-group mb-2">
                                         <label for="temprerature_min">Temperature Minimum (Celsius)</label>
-                                        <input type="number" id="temperature_min" class="form-control" placeholder="e.g. 25" required>
+                                        <input type="number" id="temp_min" class="form-control" placeholder="e.g. 25" required>
                                     </div>
 
                                     <div class="form-group mb-2">
                                         <label for="temperature_max">Temperature Maximum (Celsius)</label>
-                                        <input type="number" id="temperature_max" class="form-control" placeholder="e.g. 27" required>
+                                        <input type="number" id="temp_max" class="form-control" placeholder="e.g. 27" required>
                                     </div>
 
                                     <div class="form-group mb-2">
@@ -109,11 +109,11 @@
                                     <div class="form-group mb-2">
                                         <label for="season_requirement">Season requirement</label>
                                         <select id="season_requirement" class="form-control">
-                                            <option value="default">Unspecified</option>
-                                            <option value="default">Cool and dry</option>
-                                            <option value="default">Cool and wet</option>
-                                            <option value="available">Hot and dry</option>
-                                            <option value="out_of_stock">Hot and wet</option>
+                                            <option value="unspecified">Unspecified</option>
+                                            <option value="cool_dry">Cool and dry</option>
+                                            <option value="cool_wet">Cool and wet</option>
+                                            <option value="hot_dry">Hot and dry</option>
+                                            <option value="hot_wet">Hot and wet</option>
                                         </select>
                                     </div>
 
@@ -143,7 +143,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button id="addCropVarietyBtn" class="btn btn-primary mb-2">Add variety</button>
+                                        <button type="button" id="addCropVarietyBtn" class="btn btn-primary mb-2">Add variety</button>
                                     </div>
                                 </form>
 
