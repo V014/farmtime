@@ -37,7 +37,7 @@ function handleSignup() {
     const address = document.getElementById('address').value;
     const now = new Date().toISOString();
 
-    if (pass === passConfirm) {
+    if (pass == passConfirm) {
         db.transaction(function(tx) {
         tx.executeSql('INSERT INTO user (username, password, role, date_registered) VALUES (?, ?, ?, ?)', [user, pass, 'farmer', now], function(tx, res) {
             const userId = res.insertId;
@@ -53,7 +53,8 @@ function handleSignup() {
         }, function(error) {
             alert("Transaction failed: " + error.message);
         });
+    } else {
+        alert("Passwords do not match.");
+        window.location.href = "../index.html"; // Move back to signup
     }
-    alert("Passwords do not match.");
-        return;
 }
