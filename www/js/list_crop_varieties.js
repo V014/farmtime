@@ -1,22 +1,29 @@
-// this code lists the crop varieties in the database, and allows the user to click on one to edit it
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM crop_variety', [], function(tx, res) {
-            const cropVarietyList = document.getElementById('crop_variety_list');
+            const tbody = document.querySelector('#datatablesSimple tbody');
+            tbody.innerHTML = '';   // clear sample rows
             for (let i = 0; i < res.rows.length; i++) {
-                const cropVariety = res.rows.item(i);
-                const listItem = document.createElement('li');
-                listItem.textContent = cropVariety.crop_name + ' - ' + cropVariety.crop_variety;
-                listItem.setAttribute('data-crop-id', cropVariety.crop_id);
-                listItem.addEventListener('click', function() {
-                    const cropId = this.getAttribute('data-crop-id');
-                    // navigate to edit crop variety page with the crop id as a query parameter
-                    window.location.href = "../farmer/edit_crop_variety.html?crop_id=" + cropId;
+                const cv = res.rows.item(i);
+                const tr = document.createElement('tr');
+                tr.dataset.cropId = cv.id;           // note: use `id`, not crop_id
+                tr.innerHTML = `
+                    <td>${cv.crop_name}</td>
+                    <td>${cv.crop_variety}</td>
+                    <td>${cv.availability}</td>
+                    <td>${cv.pH_min ?? ''}-${cv.pH_max ?? ''}</td>
+                    <td>${cv.temp_min ?? ''}-${cv.temp_max ?? ''}</td>
+                    <td>${cv.yield_estimate ?? ''}${cv.yield_unit ? ' ' + cv.yield_unit : ''}</td>
+                `;
+                tr.addEventListener('click', () => {
+                    window.location.href = `../farmer/edit_crop_variety.html?crop_id=${cv.id}`;
                 });
-                cropVarietyList.appendChild(listItem);
+                tbody.appendChild(tr);
             }
+            // re‑initialise datatables if necessary
+            new simpleDatatables.DataTable("#datatablesSimple");
         });
     });
 }

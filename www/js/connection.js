@@ -21,7 +21,9 @@
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 var db = null;
 
-document.addEventListener('deviceready', function() {
+document.addEventListener('deviceready', onDeviceReady, false);
+
+function onDeviceReady() {
     // This line creates the physical .db file if it's the first time the app is opened.
     // Otherwise, it simply establishes a connection to the existing file.
     // Open the database
@@ -57,4 +59,9 @@ document.addEventListener('deviceready', function() {
         console.log('Database and Tables Ready!');
         // alert("Database and Tables Ready!");
     });
-}, false);
+}
+
+// This function is called when the user clicks on a crop variety row
+function onCropVarietyClick(cropId) {
+    window.location.href = `../farmer/edit_crop_variety.html?crop_id=${cropId}`;
+}

@@ -32,13 +32,13 @@ function addCropVariety() {
     db.transaction(function(tx) {
         try {
             tx.executeSql(
-                'INSERT INTO crop_variety (crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, ' +
+                'INSERT INTO crop_variety (name, variety, availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, ' +
                 'season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_planting, fertilizer_growing, irrigation_needs, ' +
-                'planting_distance, date_recorded) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                'planting_distance, date_updated, date_recorded) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                 [name, variety, availability, pH_min, pH_max, temp_min, temp_max,
                  rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit,
                  common_pests, common_diseases, soil_type, fertilizer_planting, fertilizer_growing,
-                 irrigation_needs, planting_distance, new Date().toISOString()],
+                 irrigation_needs, planting_distance, new Date().toISOString(), new Date().toISOString()],
                 function(tx, res) {
                     alert("Crop variety added successfully!");
                     window.location.href = "../farmer/crop_variety.html";
