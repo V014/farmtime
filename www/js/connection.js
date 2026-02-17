@@ -60,8 +60,3 @@ function onDeviceReady() {
         // alert("Database and Tables Ready!");
     });
 }
-
-// This function is called when the user clicks on a crop variety row
-function onCropVarietyClick(cropId) {
-    window.location.href = `../farmer/edit_crop_variety.html?crop_id=${cropId}`;
-}
