@@ -56,141 +56,140 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <b>To add a crop variety, fill in all the fields below.</b>
-                                <form>
-                                    <div class="form-group mb-2">
-                                        <label for="crop_name">Crop name</label>
-                                        <input type="text" id="crop_name" class="form-control" placeholder="e.g. Maize" required>
-                                    </div>
+                                
+                                <div class="form-group mb-2">
+                                    <label for="crop_name">Crop name</label>
+                                    <input type="text" id="name" class="form-control" placeholder="e.g. Maize" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="crop_variety">Crop variety</label>
-                                        <input type="text" id="crop_variety" class="form-control" placeholder="e.g. 423-Kanyani" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="crop_variety">Crop variety</label>
+                                    <input type="text" id="variety" class="form-control" placeholder="e.g. 423-Kanyani" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="availability">Availability</label>
-                                        <select id="availability" class="form-control">
-                                            <option value="default">Unspecified</option>
-                                            <option value="available">Available</option>
-                                            <option value="out_of_stock">Out of stock</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="availability">Availability</label>
+                                    <select id="availability" class="form-control">
+                                        <option value="default">Unspecified</option>
+                                        <option value="available">Available</option>
+                                        <option value="out_of_stock">Out of stock</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="pH_requirement">pH Minimum</label>
-                                        <input type="number" id="pH_min" class="form-control" placeholder="e.g. 5.5" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="pH_requirement">pH Minimum</label>
+                                    <input type="number" id="pH_min" class="form-control" placeholder="e.g. 5.5" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="pH_requirement_min">pH Maximum</label>
-                                        <input type="number" id="pH_max" class="form-control" placeholder="e.g. 6.5" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="pH_requirement_min">pH Maximum</label>
+                                    <input type="number" id="pH_max" class="form-control" placeholder="e.g. 6.5" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="temprerature_min">Temperature Minimum (Celsius)</label>
-                                        <input type="number" id="temp_min" class="form-control" placeholder="e.g. 25" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="temprerature_min">Temperature Minimum (Celsius)</label>
+                                    <input type="number" id="temp_min" class="form-control" placeholder="e.g. 25" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="temperature_max">Temperature Maximum (Celsius)</label>
-                                        <input type="number" id="temp_max" class="form-control" placeholder="e.g. 27" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="temperature_max">Temperature Maximum (Celsius)</label>
+                                    <input type="number" id="temp_max" class="form-control" placeholder="e.g. 27" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="rainfall_min">Rainfall Minimum (mm)</label>
-                                        <input type="number" id="rainfall_min" class="form-control" placeholder="e.g. 300" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="rainfall_min">Rainfall Minimum (mm)</label>
+                                    <input type="number" id="rainfall_min" class="form-control" placeholder="e.g. 300" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="rainfall_max">Rainfall Maximum (mm)</label>
-                                        <input type="number" id="rainfall_max" class="form-control" placeholder="e.g. 500" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="rainfall_max">Rainfall Maximum (mm)</label>
+                                    <input type="number" id="rainfall_max" class="form-control" placeholder="e.g. 500" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="season_requirement">Season requirement</label>
-                                        <select id="season_requirement" class="form-control">
-                                            <option value="unspecified">Unspecified</option>
-                                            <option value="cool_dry">Cool and dry</option>
-                                            <option value="cool_wet">Cool and wet</option>
-                                            <option value="hot_dry">Hot and dry</option>
-                                            <option value="hot_wet">Hot and wet</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="season_requirement">Season requirement</label>
+                                    <select id="season_requirement" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <option value="cool_dry">Cool and dry</option>
+                                        <option value="cool_wet">Cool and wet</option>
+                                        <option value="hot_dry">Hot and dry</option>
+                                        <option value="hot_wet">Hot and wet</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="yeild_estimate">Yield estimate</label>
-                                        <input type="number" id="yeild_estimate" class="form-control" placeholder="e.g. 500" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="yield_estimate">Yield estimate</label>
+                                    <input type="number" id="yield_estimate" class="form-control" placeholder="e.g. 500" required>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="yield_unit">Yield unit</label>
-                                        <select id="yield_unit" class="form-control">
-                                            <option value="default">Unspecified</option>
-                                            <option value="default">Kg/ha</option>
-                                            <option value="default">Mg/ha</option>
-                                            <option value="available">Bags/ha</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="yield_unit">Yield unit</label>
+                                    <select id="yield_unit" class="form-control">
+                                        <option value="default">Unspecified</option>
+                                        <option value="default">Kg/ha</option>
+                                        <option value="default">Mg/ha</option>
+                                        <option value="available">Bags/ha</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="common_pests">Common pests</label>
-                                        <textarea id="common_pests" rows="3" class="form-control" placeholder="e.g. Army worms, weevils"></textarea>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="common_pests">Common pests</label>
+                                    <textarea id="common_pests" rows="3" class="form-control" placeholder="e.g. Army worms, weevils"></textarea>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="common_diseases">Common diseases</label>
-                                        <textarea id="common_diseases" rows="3" class="form-control" placeholder="e.g. Blight, rust"></textarea>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="common_diseases">Common diseases</label>
+                                    <textarea id="common_diseases" rows="3" class="form-control" placeholder="e.g. Blight, rust"></textarea>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="soil_type">Soil type</label>
-                                        <select id="soil_type" class="form-control">
-                                            <option value="unspecified">Unspecified</option>
-                                            <option value="loamy">Loamy</option>
-                                            <option value="clay">Clay</option>
-                                            <option value="sandy">Sandy</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="soil_type">Soil type</label>
+                                    <select id="soil_type" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <option value="loamy">Loamy</option>
+                                        <option value="clay">Clay</option>
+                                        <option value="sandy">Sandy</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="fertilizer_planting">Fertilizer planting</label>
-                                        <select id="fertilizer_planting" class="form-control">
-                                            <option value="unspecified">Unspecified</option>
-                                            <option value="NPK">NPK</option>
-                                            <option value="DAP">DAP</option>
-                                            <option value="compost">Compost</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="fertilizer_planting">Fertilizer planting</label>
+                                    <select id="fertilizer_planting" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <option value="NPK">NPK</option>
+                                        <option value="DAP">DAP</option>
+                                        <option value="compost">Compost</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="fertilizer_growing">Fertilizer growing</label>
-                                        <select id="fertilizer_growing" class="form-control">
-                                            <option value="unspecified">Unspecified</option>
-                                            <option value="urea">Urea</option>
-                                            <option value="CAN">CAN</option>
-                                            <option value="compost">Compost</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="fertilizer_growing">Fertilizer growing</label>
+                                    <select id="fertilizer_growing" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <option value="urea">Urea</option>
+                                        <option value="CAN">CAN</option>
+                                        <option value="compost">Compost</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="irrigation_needs">Irrigation needs</label>
-                                        <select id="irrigation_needs" class="form-control">
-                                            <option value="unspecified">Unspecified</option>
-                                            <option value="low">Low</option>
-                                            <option value="medium">Medium</option>
-                                            <option value="high">High</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="irrigation_needs">Irrigation needs</label>
+                                    <select id="irrigation_needs" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="planting_distance">Planting distance (cm)</label>
-                                        <input type="number" id="planting_distance" class="form-control" placeholder="e.g. 30">
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="planting_distance">Planting distance (cm)</label>
+                                    <input type="number" id="planting_distance" class="form-control" placeholder="e.g. 30">
+                                </div>
 
-                                    <div class="form-group">
-                                        <button type="button" id="addCropVarietyBtn" class="btn btn-primary mb-2">Add variety</button>
-                                    </div>
-                                </form>
+                                <div class="form-group">
+                                    <input type="button" id="addCropVarietyBtn" class="btn btn-primary mb-2" value="Add variety">
+                                </div>
 
                             </div>
                         </div>

@@ -1,4 +1,6 @@
 document.addEventListener('deviceready', onDeviceReady, false);
+document.addEventListener('DOMContentLoaded', onDeviceReady, false);
+
 
 function onDeviceReady() {
     // Attach the click event to your button
@@ -44,6 +46,7 @@ function addCropVariety() {
                 });
         } catch (error) {
             alert("Error adding crop variety: " + error.message);
+            console.error(error);
             window.location.href = "../farmer/add_crop_variety.html";
         }
     });
