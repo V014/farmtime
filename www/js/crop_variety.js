@@ -2,8 +2,8 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     // Attach the click event to your button
-    if (document.getElementById('add_crop_variety')) {
-        document.getElementById('add_crop_variety').addEventListener('click', addCropVariety);
+    if (document.getElementById('addCropVarietyBtn')) {
+        document.getElementById('addCropVarietyBtn').addEventListener('click', addCropVariety);
     }
 }
 
