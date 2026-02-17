@@ -3,16 +3,24 @@ document.addEventListener('DOMContentLoaded', onDeviceReady, false);
 
 
 function onDeviceReady() {
-    // Attach the click event to your button
+    // Attach the click event to the add form button (if present)
     if (document.getElementById('addCropVarietyBtn')) {
-        document.getElementById('addCropVarietyBtn').addEventListener('click', addCropVariety);
+        document.getElementById('addCropVarietyBtn').addEventListener('click', function(e) {
+            e.preventDefault(); // stop form submission if any
+            addCropVariety();
+        });
+    }
+
+    // If this page contains the datatable, populate it
+    if (document.querySelector('#datatablesSimple')) {
+        listVarieties();
     }
 }
 
 function addCropVariety() {
-    const name = document.getElementById('name').value;
-    const variety = document.getElementById('variety').value;
-    const availability = (document.getElementById('availability').value);
+    const crop_name = document.getElementById('crop_name').value;
+    const crop_variety = document.getElementById('crop_variety').value;
+    const availability = document.getElementById('availability').value;
     const pH_min = parseFloat(document.getElementById('pH_min').value);
     const pH_max = parseFloat(document.getElementById('pH_max').value);
     const temp_min = parseFloat(document.getElementById('temp_min').value);
@@ -33,10 +41,10 @@ function addCropVariety() {
     db.transaction(function(tx) {
         try {
             tx.executeSql(
-                'INSERT INTO crop_variety (name, variety, availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, ' +
+                'INSERT INTO crop_variety (crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, ' +
                 'season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_planting, fertilizer_growing, irrigation_needs, ' +
                 'planting_distance, date_updated, date_recorded) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-                [name, variety, availability, pH_min, pH_max, temp_min, temp_max,
+                [crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max,
                  rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit,
                  common_pests, common_diseases, soil_type, fertilizer_planting, fertilizer_growing,
                  irrigation_needs, planting_distance, new Date().toISOString(), new Date().toISOString()],
