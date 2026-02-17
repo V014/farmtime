@@ -48,8 +48,8 @@ CREATE TABLE plot (
 -- 3. Crops and Varieties
 CREATE TABLE crop_variety (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    crop_name TEXT NOT NULL,
-    crop_variety TEXT NOT NULL,
+    name TEXT NOT NULL,
+    variety TEXT NOT NULL,
     availability TEXT NOT NULL, -- enum
     pH_min REAL,
     pH_max REAL,
