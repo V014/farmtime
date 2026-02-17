@@ -1,6 +1,4 @@
 document.addEventListener('deviceready', onDeviceReady, false);
-document.addEventListener('DOMContentLoaded', onDeviceReady, false);
-
 
 function onDeviceReady() {
     // Attach the click event to the add form button (if present)
