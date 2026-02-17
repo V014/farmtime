@@ -63,10 +63,15 @@ function addCropVariety() {
 function listVarieties() {
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM crop_variety', [], function(tx, res) {
+            console.log('listVarieties: found rows =', res.rows.length);
+            if (res.rows.length === 0) {
+                console.warn('No crop varieties in database');
+            }
             const tbody = document.querySelector('#datatablesSimple tbody');
             tbody.innerHTML = '';   // clear sample rows
             for (let i = 0; i < res.rows.length; i++) {
                 const cv = res.rows.item(i);
+                console.log('row', i, cv);
                 const tr = document.createElement('tr');
                 tr.dataset.cropId = cv.id;           // note: use `id`, not crop_id
                 tr.innerHTML = `
@@ -83,8 +88,17 @@ function listVarieties() {
                 tbody.appendChild(tr);
             }
             // re‑initialize databases if necessary
-            new simpleDatatables.DataTable("#datatablesSimple");
+            try {
+                new simpleDatatables.DataTable("#datatablesSimple");
+            } catch (e) {
+                console.error('datatables init failed', e);
+            }
+        }, function(tx, err) {
+            console.error('SELECT error', err);
+            alert('Error reading varieties: ' + err.message);
         });
+    }, function(txErr) {
+        console.error('transaction error', txErr);
     });
 }
 
