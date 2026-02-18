@@ -53,7 +53,7 @@ function onDeviceReady() {
         tx.executeSql('CREATE TABLE IF NOT EXISTS harvest (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,crop_id INTEGER NOT NULL, quantity INTEGER NOT NULL, unit TEXT NOT NULL, storage_type TEXT NOT NULL, quality_grade TEXT NOT NULL, planting_date DATE NOT NULL, harvest_date DATE NOT NULL, market_price_mwk INTEGER, date_recorded DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(crop_id) REFERENCES crop(id))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS weather_cache (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, field_id INTEGER NOT NULL, location TEXT NOT NULL, temperature_celsius INTEGER NOT NULL,rainfall_mm INTEGER NOT NULL, wind_speed INTEGER NOT NULL, humidity INTEGER NOT NULL, date_recorded DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(field_id) REFERENCES field(id))');
     }, function(error) {
-        console.error('Initialization Error: ' + error.message);
+        // console.error('Initialization Error: ' + error.message);
         alert("Initialization Error! : " + error.message);
     }, function() {
         console.log('Database and Tables Ready!');
