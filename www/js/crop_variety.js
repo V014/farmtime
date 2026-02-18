@@ -43,8 +43,8 @@ function addCropVariety() {
             tx.executeSql(
                 'INSERT INTO crop_variety (crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, ' +
                 'season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_growing, growth_days, ' +
-                'fertilizer_production, production_days, irrigation_needs, ' +
-                'planting_distance, date_updated, date_recorded) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                'fertilizer_production, production_days, irrigation_needs, planting_distance, date_updated, date_recorded) ' +
+                'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                 [crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max,
                  rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit,
                  common_pests, common_diseases, soil_type, fertilizer_growth, growth_days,
@@ -65,15 +65,15 @@ function addCropVariety() {
 function listVarieties() {
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM crop_variety', [], function(tx, res) {
-            console.log('listVarieties: found rows =', res.rows.length);
-            if (res.rows.length === 0) {
-                console.warn('No crop varieties in database');
-            }
+            // console.log('listVarieties: found rows =', res.rows.length);
+            // if (res.rows.length === 0) {
+            //     console.warn('No crop varieties in database');
+            // }
             const tbody = document.querySelector('#datatablesSimple tbody');
             tbody.innerHTML = '';   // clear sample rows
             for (let i = 0; i < res.rows.length; i++) {
                 const cv = res.rows.item(i);
-                console.log('row', i, cv);
+                // console.log('row', i, cv);
                 const tr = document.createElement('tr');
                 tr.dataset.cropId = cv.id;           // note: use `id`, not crop_id
                 tr.innerHTML = `
@@ -93,14 +93,16 @@ function listVarieties() {
             try {
                 new simpleDatatables.DataTable("#datatablesSimple");
             } catch (e) {
-                console.error('datatables init failed', e);
+                // console.error('datatables init failed', e);
+                alert('datatables init failed: ' + err.message);
             }
         }, function(tx, err) {
-            console.error('SELECT error', err);
+            // console.error('SELECT error', err);
             alert('Error reading varieties: ' + err.message);
         });
     }, function(txErr) {
-        console.error('transaction error', txErr);
+        // console.error('transaction error', txErr);
+        alert('transaction error: ' + txErr);
     });
 }
 
