@@ -2,10 +2,20 @@
 <widget id="com.farmtime.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>FarmTime</name>
     <description>Sample Apache Cordova App for Farming</description>
-    <author email="dev@farmtime.com" href="https://farmtime.com">
-        FarmTime Team
+    <author email="wangakanjala@gmail.com" href="https://www.github.io/v014/farmtime">
+        Wanga kanjala
     </author>
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <platform name="android">
+        <!-- Sets the android targets  -->
+        <preference name="android-compileSdkVersion" value="36" />
+        <preference name="android-targetSdkVersion" value="31" />
+        <preference name="android-minSdkVersion" value="24" /> 
+        <!-- Prevents blurring on high-resolution devices. -->
+        <icon src="res/icon/android/ldpi.png" density="ldpi" />
+        <icon src="res/icon/android/mdpi.png" density="mdpi" />
+        <icon src="res/icon/android/hdpi.png" density="hdpi" />
+    </platform>
 </widget>
