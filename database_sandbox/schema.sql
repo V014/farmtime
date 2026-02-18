@@ -64,7 +64,7 @@ CREATE TABLE crop_variety (
     common_pests TEXT,
     common_diseases TEXT,
     soil_type TEXT NOT NULL, -- enum
-    fertilizer_recommendation TEXT,
+    fertilizer_growing TEXT,
     irrigation_needs TEXT NOT NULL, -- enum
     planting_distance TEXT NOT NULL, -- e.g., '30cm x 30cm'
     date_recorded DATETIME NOT NULL,

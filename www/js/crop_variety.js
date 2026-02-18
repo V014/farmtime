@@ -31,8 +31,10 @@ function addCropVariety() {
     const common_pests = document.getElementById('common_pests').value;
     const common_diseases = document.getElementById('common_diseases').value;
     const soil_type = document.getElementById('soil_type').value;
-    const fertilizer_planting = document.getElementById('fertilizer_planting').value;
-    const fertilizer_growing = document.getElementById('fertilizer_growing').value;
+    const fertilizer_growth = document.getElementById('fertilizer_growing').value;
+    const growth_days = document.getElementById('growth_days').value;
+    const fertilizer_production = document.getElementById('fertilizer_production').value;
+    const production_days = document.getElementById('production_days').value;
     const irrigation_needs = document.getElementById('irrigation_needs').value;
     const planting_distance = document.getElementById('planting_distance').value;
 
@@ -40,12 +42,14 @@ function addCropVariety() {
         try {
             tx.executeSql(
                 'INSERT INTO crop_variety (crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, ' +
-                'season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_planting, fertilizer_growing, irrigation_needs, ' +
-                'planting_distance, date_updated, date_recorded) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                'season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_growing, growth_days, ' +
+                'fertilizer_production, production_days, irrigation_needs, ' +
+                'planting_distance, date_updated, date_recorded) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                 [crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max,
                  rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit,
-                 common_pests, common_diseases, soil_type, fertilizer_planting, fertilizer_growing,
-                 irrigation_needs, planting_distance, new Date().toISOString(), new Date().toISOString()],
+                 common_pests, common_diseases, soil_type, fertilizer_growth, growth_days,
+                 fertilizer_production, production_days, irrigation_needs, planting_distance, 
+                 new Date().toISOString(), new Date().toISOString()],
                 function(tx, res) {
                     alert("Crop variety added successfully!");
                     window.location.href = "../farmer/crop_variety.html";
