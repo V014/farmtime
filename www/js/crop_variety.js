@@ -65,10 +65,6 @@ function addCropVariety() {
 function listVarieties() {
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM crop_variety', [], function(tx, res) {
-            // console.log('listVarieties: found rows =', res.rows.length);
-            // if (res.rows.length === 0) {
-            //     console.warn('No crop varieties in database');
-            // }
             const tbody = document.querySelector('#datatablesSimple tbody');
             tbody.innerHTML = '';   // clear sample rows
             for (let i = 0; i < res.rows.length; i++) {
@@ -88,13 +84,6 @@ function listVarieties() {
                     window.location.href = `../farmer/edit_crop_variety.html?crop_id=${cv.id}`;
                 });
                 tbody.appendChild(tr);
-            }
-            // re‑initialize databases if necessary
-            try {
-                new simpleDatatables.DataTable("#datatablesSimple");
-            } catch (e) {
-                // console.error('datatables init failed', e);
-                alert('datatables init failed: ' + err.message);
             }
         }, function(tx, err) {
             // console.error('SELECT error', err);
