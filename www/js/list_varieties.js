@@ -1,12 +1,6 @@
-function onDeviceReady() {
-    // If this page contains the crop_varieties_table id, populate it
-    if (document.getElementById('crop_varieties_table')) {
-        listVarieties();
-    }
-}
+onload = listVarieties;
 
 function listVarieties() {
-    alert("list varieties block is working");
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM crop_variety', [], function(tx, res) {
             const tbody = document.getElementById('crop_varieties_table').getElementsByTagName('tbody')[0];
