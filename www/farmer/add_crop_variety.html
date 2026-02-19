@@ -6,8 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Crop variety</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <title>Add crop variety</title>
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -72,7 +71,7 @@
                                     <select id="availability" class="form-control">
                                         <option value="default">Unspecified</option>
                                         <option value="available">Available</option>
-                                        <option value="out_of_stock">Out of stock</option>
+                                        <option value="unavailable">Out of stock</option>
                                     </select>
                                 </div>
 
@@ -110,15 +109,14 @@
                                     <label for="season_requirement">Season requirement</label>
                                     <select id="season_requirement" class="form-control">
                                         <option value="unspecified">Unspecified</option>
-                                        <option value="cool_dry">Cool and dry</option>
-                                        <option value="cool_wet">Cool and wet</option>
-                                        <option value="hot_dry">Hot and dry</option>
-                                        <option value="hot_wet">Hot and wet</option>
+                                        <option value="rainy">Rainy</option>
+                                        <option value="dry">Dry</option>
+                                        <option value="all">All seasons</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <label for="yield_estimate">Yield estimate</label>
+                                    <label for="yield_estimate">Yield estimates (50kg bags)</label>
                                     <input type="number" id="yield_estimate" class="form-control" placeholder="e.g. 500" required>
                                 </div>
 
@@ -126,9 +124,8 @@
                                     <label for="yield_unit">Yield unit</label>
                                     <select id="yield_unit" class="form-control">
                                         <option value="default">Unspecified</option>
-                                        <option value="default">Kg/ha</option>
-                                        <option value="default">Mg/ha</option>
-                                        <option value="available">Bags/ha</option>
+                                        <option value="hector">Bags/hector</option>
+                                        <option value="acre">Bags/acre</option>
                                     </select>
                                 </div>
 
@@ -215,9 +212,7 @@
         <script src="../js/scripts.js"></script>
         <script src="../js/add_crop_variety.js"></script>
         <script src="../js/common.js"></script>
+        <script src="../js/bootstrap.bundle.min.js"></script>
         <script src="../cordova.js"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     </body>
 </html>

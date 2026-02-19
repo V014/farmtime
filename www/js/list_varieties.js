@@ -1,6 +1,6 @@
 function onDeviceReady() {
-    // If this page contains the datatable, populate it
-    if (document.getElementById('datatablesSimple')) {
+    // If this page contains the crop_varieties_table id, populate it
+    if (document.getElementById('crop_varieties_table')) {
         listVarieties();
     }
 }
@@ -9,7 +9,7 @@ function listVarieties() {
     alert("list varieties block is working");
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM crop_variety', [], function(tx, res) {
-            const tbody = document.getElementById('datatablesSimple').getElementsByTagName('tbody')[0];
+            const tbody = document.getElementById('crop_varieties_table').getElementsByTagName('tbody')[0];
             // tbody.innerHTML = '';   // clear sample rows
             for (let i = 0; i < res.rows.length; i++) {
                 const cv = res.rows.item(i);
