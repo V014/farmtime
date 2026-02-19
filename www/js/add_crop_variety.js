@@ -1,10 +1,8 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    // Attach the click event to the add form button (if present)
     if (document.getElementById('addCropVarietyBtn')) {
         document.getElementById('addCropVarietyBtn').addEventListener('click', function(e) {
-            e.preventDefault(); // stop form submission if any
             addCropVariety();
         });
     }
@@ -33,26 +31,31 @@ function addCropVariety() {
     const irrigation_needs = document.getElementById('irrigation_needs').value;
     const planting_distance = document.getElementById('planting_distance').value;
 
-    db.transaction(function(tx) {
-        try {
-            tx.executeSql(
-                'INSERT INTO crop_variety (crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, ' +
-                'season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_growing, growth_days, ' +
-                'fertilizer_production, production_days, irrigation_needs, planting_distance, date_updated, date_recorded) ' +
-                'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-                [crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max,
-                 rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit,
-                 common_pests, common_diseases, soil_type, fertilizer_growth, growth_days,
-                 fertilizer_production, production_days, irrigation_needs, planting_distance, 
-                 new Date().toISOString(), new Date().toISOString()],
-                function(tx, res) {
-                    alert("Crop variety added successfully!");
-                    window.location.href = "../farmer/crop_variety.html";
-                });
-        } catch (error) {
-            alert("Error adding crop variety: " + error.message);
-            console.error(error);
-            window.location.href = "../farmer/add_crop_variety.html";
-        }
-    });
+    // if above fields are empty, show error and return
+    if (!crop_name || !crop_variety || !availability || isNaN(pH_min) || isNaN(pH_max) || isNaN(temp_min) || isNaN(temp_max) || isNaN(rainfall_min) || isNaN(rainfall_max) || !season_requirement || isNaN(yield_estimate) || !yield_unit || !common_pests || !common_diseases || !soil_type || !fertilizer_growth || isNaN(growth_days) || !fertilizer_production || isNaN(production_days) || !irrigation_needs || !planting_distance) {
+        alert("Please fill in all fields correctly.");
+        return;
+    } else {
+        db.transaction(function(tx) {
+            try {
+                tx.executeSql(
+                    'INSERT INTO crop_variety (crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max, rainfall_min, rainfall_max, ' +
+                    'season_requirement, yield_estimate, yield_unit, common_pests, common_diseases, soil_type, fertilizer_growing, growth_days, ' +
+                    'fertilizer_production, production_days, irrigation_needs, planting_distance, date_updated, date_recorded) ' +
+                    'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                    [crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max,
+                    rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit,
+                    common_pests, common_diseases, soil_type, fertilizer_growth, growth_days,
+                    fertilizer_production, production_days, irrigation_needs, planting_distance, 
+                    new Date().toISOString(), new Date().toISOString()],
+                    function(tx, res) {
+                        alert("Crop variety added successfully!");
+                        window.location.href = "../farmer/crop_variety.html";
+                    });
+            } catch (error) {
+                alert("Error adding crop variety: " + error.message);
+                window.location.href = "../farmer/add_crop_variety.html";
+            }
+        });
+    }
 }
