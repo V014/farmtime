@@ -10,7 +10,7 @@ function onDeviceReady() {
     }
 
     // If this page contains the datatable, populate it
-    if (document.querySelector('#datatable')) {
+    if (document.querySelector('#datatablesSimple')) {
         listVarieties();
     }
 }
@@ -65,7 +65,7 @@ function addCropVariety() {
 function listVarieties() {
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM crop_variety', [], function(tx, res) {
-            const tbody = document.querySelector('#datatable tbody');
+            const tbody = document.querySelector('#datatablesSimple tbody');
             tbody.innerHTML = '';   // clear sample rows
             for (let i = 0; i < res.rows.length; i++) {
                 const cv = res.rows.item(i);

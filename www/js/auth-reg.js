@@ -1,7 +1,4 @@
-// auth.js
 document.addEventListener('deviceready', onDeviceReady, false);
-
-// db is declared in connection.js
 
 function onDeviceReady() {
     // Attach the click event to your button
