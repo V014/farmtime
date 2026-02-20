@@ -12,9 +12,8 @@ function listVarieties() {
                     <td>${cv.crop_name}</td>
                     <td>${cv.crop_variety}</td>
                     <td>${cv.availability}</td>
-                    <td>${cv.yield_estimate ?? ''}${cv.yield_unit ? ' ' + cv.yield_unit : ''}</td>
-                    <td><button class="btn btn-primary rounded-circle" onclick="window.location.href='../farmer/edit_crop_variety.html?crop_id=${cv.id}'"><img src="../icons/pencil-square.svg" alt="Edit" width="16" height="16"></button></td>
-                    <td><button class="btn btn-danger rounded-circle" onclick="deleteVariety(${cv.id})"><img src="../icons/trash3.svg" alt="Delete" width="16" height="16"></button></td>
+                    <td><button class="btn" onclick="window.location.href='../farmer/edit_crop_variety.html?crop_id=${cv.id}'"><img src="../icons/pencil-square.svg" alt="Edit" width="16" height="16"></button></td>
+                    <td><button class="btn" onclick="deleteVariety(${cv.id})"><img src="../icons/trash3.svg" alt="Delete" width="16" height="16"></button></td>
                 `;
                 tbody.appendChild(tr);
             }
