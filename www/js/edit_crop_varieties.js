@@ -32,7 +32,7 @@ function loadCropVarietyData(cropId) {
                 // Populate form fields with existing data
                 document.getElementById('crop_name').value = cv.crop_name || '';
                 document.getElementById('crop_variety').value = cv.crop_variety || '';
-                document.getElementById('availability').value = cv.availability || 'default';
+                document.getElementById('availability').value = cv.availability || 'unspecified';
                 document.getElementById('pH_min').value = cv.pH_min || '';
                 document.getElementById('pH_max').value = cv.pH_max || '';
                 document.getElementById('temp_min').value = cv.temp_min || '';
@@ -41,7 +41,7 @@ function loadCropVarietyData(cropId) {
                 document.getElementById('rainfall_max').value = cv.rainfall_max || '';
                 document.getElementById('season_requirement').value = cv.season_requirement || 'unspecified';
                 document.getElementById('yield_estimate').value = cv.yield_estimate || '';
-                document.getElementById('yield_unit').value = cv.yield_unit || 'default';
+                document.getElementById('yield_unit').value = cv.yield_unit || 'unspecified';
                 document.getElementById('common_pests').value = cv.common_pests || '';
                 document.getElementById('common_diseases').value = cv.common_diseases || '';
                 document.getElementById('soil_type').value = cv.soil_type || 'unspecified';
