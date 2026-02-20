@@ -24,7 +24,7 @@ function addCropVariety() {
     const common_pests = document.getElementById('common_pests').value;
     const common_diseases = document.getElementById('common_diseases').value;
     const soil_type = document.getElementById('soil_type').value;
-    const fertilizer_growth = document.getElementById('fertilizer_growing').value;
+    const fertilizer_growing = document.getElementById('fertilizer_growing').value;
     const growth_days = document.getElementById('growth_days').value;
     const fertilizer_production = document.getElementById('fertilizer_production').value;
     const production_days = document.getElementById('production_days').value;
@@ -45,7 +45,7 @@ function addCropVariety() {
                     'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                     [crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max,
                     rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit,
-                    common_pests, common_diseases, soil_type, fertilizer_growth, growth_days,
+                    common_pests, common_diseases, soil_type, fertilizer_growing, growth_days,
                     fertilizer_production, production_days, irrigation_needs, planting_distance, 
                     new Date().toISOString(), new Date().toISOString()],
                     function(tx, res) {

@@ -45,10 +45,12 @@ function loadCropVarietyData(cropId) {
                 document.getElementById('common_pests').value = cv.common_pests || '';
                 document.getElementById('common_diseases').value = cv.common_diseases || '';
                 document.getElementById('soil_type').value = cv.soil_type || 'unspecified';
-                // Map fertilizer_planting form field to fertilizer_growing database field
-                document.getElementById('fertilizer_planting').value = cv.fertilizer_growing || 'unspecified';
-                // Map fertilizer_growing form field to fertilizer_production database field
-                document.getElementById('fertilizer_growing').value = cv.fertilizer_production || 'unspecified';
+                // Map fertilizer_production form field to fertilizer_production database field
+                document.getElementById('fertilizer_production').value = cv.fertilizer_production || 'unspecified';
+                document.getElementById('production_days').value = cv.production_days || '';
+                // Map fertilizer_growing form field to fertilizer_growing database field
+                document.getElementById('fertilizer_growing').value = cv.fertilizer_growing || 'unspecified';
+                document.getElementById('growth_days').value = cv.growth_days || '';
                 document.getElementById('irrigation_needs').value = cv.irrigation_needs || 'unspecified';
                 document.getElementById('planting_distance').value = cv.planting_distance || '';
             } else {
@@ -78,8 +80,10 @@ function updateCropVariety() {
     const common_pests = document.getElementById('common_pests').value;
     const common_diseases = document.getElementById('common_diseases').value;
     const soil_type = document.getElementById('soil_type').value;
-    const fertilizer_growing = document.getElementById('fertilizer_planting').value;
-    const fertilizer_production = document.getElementById('fertilizer_growing').value;
+    const fertilizer_growing = document.getElementById('fertilizer_growing').value;
+    const growth_days = document.getElementById('growth_days').value;
+    const fertilizer_production = document.getElementById('fertilizer_production').value;
+    const production_days = document.getElementById('production_days').value;
     const irrigation_needs = document.getElementById('irrigation_needs').value;
     const planting_distance = document.getElementById('planting_distance').value;
 
@@ -87,7 +91,8 @@ function updateCropVariety() {
     if (!crop_name || !crop_variety || !availability || isNaN(pH_min) || isNaN(pH_max) || 
         isNaN(temp_min) || isNaN(temp_max) || isNaN(rainfall_min) || isNaN(rainfall_max) || 
         !season_requirement || isNaN(yield_estimate) || !yield_unit || !common_pests || 
-        !common_diseases || !soil_type || !irrigation_needs || !planting_distance) {
+        !common_diseases || !soil_type || !fertilizer_growing || !growth_days || 
+        !fertilizer_production || !production_days || !irrigation_needs || !planting_distance) {
         alert("Please fill in all required fields correctly.");
         return;
     }
@@ -98,12 +103,12 @@ function updateCropVariety() {
                 'UPDATE crop_variety SET crop_name=?, crop_variety=?, availability=?, pH_min=?, pH_max=?, ' +
                 'temp_min=?, temp_max=?, rainfall_min=?, rainfall_max=?, season_requirement=?, ' +
                 'yield_estimate=?, yield_unit=?, common_pests=?, common_diseases=?, soil_type=?, ' +
-                'fertilizer_growing=?, fertilizer_production=?, irrigation_needs=?, planting_distance=?, date_updated=? ' +
+                'fertilizer_growing=?, growth_days=?, fertilizer_production=?, production_days=?, irrigation_needs=?, planting_distance=?, date_updated=? ' +
                 'WHERE id=?',
                 [crop_name, crop_variety, availability, pH_min, pH_max, temp_min, temp_max,
                  rainfall_min, rainfall_max, season_requirement, yield_estimate, yield_unit,
-                 common_pests, common_diseases, soil_type, fertilizer_growing, fertilizer_production,
-                 irrigation_needs, planting_distance, new Date().toISOString(), currentCropId],
+                 common_pests, common_diseases, soil_type, fertilizer_growing, growth_days,
+                 fertilizer_production, production_days, irrigation_needs, planting_distance, new Date().toISOString(), currentCropId],
                 function(tx, res) {
                     alert("Crop variety updated successfully!");
                     window.location.href = "../farmer/crop_variety.html";
