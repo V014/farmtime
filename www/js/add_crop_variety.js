@@ -32,7 +32,11 @@ function addCropVariety() {
     const planting_distance = document.getElementById('planting_distance').value;
 
     // if above fields are empty, show error and return
-    if (!crop_name || !crop_variety || !availability || isNaN(pH_min) || isNaN(pH_max) || isNaN(temp_min) || isNaN(temp_max) || isNaN(rainfall_min) || isNaN(rainfall_max) || !season_requirement || isNaN(yield_estimate) || !yield_unit || !common_pests || !common_diseases || !soil_type || !fertilizer_growth || isNaN(growth_days) || !fertilizer_production || isNaN(production_days) || !irrigation_needs || !planting_distance) {
+    if (!crop_name || !crop_variety || !availability || isNaN(pH_min) || isNaN(pH_max) 
+        || isNaN(temp_min) || isNaN(temp_max) || isNaN(rainfall_min) || isNaN(rainfall_max) 
+        || !season_requirement || isNaN(yield_estimate) || !yield_unit || !common_pests || !common_diseases 
+        || !soil_type || !fertilizer_growing || isNaN(growth_days) || !fertilizer_production 
+        || isNaN(production_days) || !irrigation_needs || !planting_distance) {
         alert("Please fill in all fields correctly.");
         return;
     } else {
