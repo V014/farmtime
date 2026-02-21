@@ -44,7 +44,7 @@ $(document).ready(function() {
                 </a>
                 <div class="collapse" id="collapseCrops" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="active_crops.html">Active crops</a>
+                        <a class="nav-link" href="planted_crops.html">Active crops</a>
                         <a class="nav-link" href="crop_variety.html">Crop variety</a>
                     </nav>
                 </div>
@@ -56,7 +56,7 @@ $(document).ready(function() {
                 </a>
                 <div class="collapse" id="collapseLands" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#">Fields</a>
+                        <a class="nav-link" href="field.html">Fields</a>
                         <a class="nav-link" href="#">Plots</a>
                     </nav>
                 </div>
