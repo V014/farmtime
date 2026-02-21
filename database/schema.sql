@@ -24,11 +24,11 @@ CREATE TABLE Field (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     field_name TEXT NOT NULL,
-    area_size INTEGER NOT NULL,
+    area_height INTEGER NOT NULL,
+    area_width INTEGER NOT NULL,
     location TEXT NOT NULL,
-    area_unit TEXT NOT NULL, -- e.g., 'Hectares', 'Acres'
     soil_type TEXT NOT NULL, -- enum handled as text
-    tenure_type TEXT NOT NULL, -- e.g., 'Customary', 'Leasehold'
+    tenure_type TEXT NOT NULL, -- e.g., 'Owned', 'Rented'
     date_recorded DATETIME NOT NULL,
     date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
