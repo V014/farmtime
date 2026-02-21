@@ -38,8 +38,8 @@ CREATE TABLE plot (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     field_id INTEGER NOT NULL,
     plot_name TEXT NOT NULL,
-    area_size INTEGER NOT NULL,
-    area_unit TEXT NOT NULL, -- e.g., 'Square meters', 'Acres'
+    area_height INTEGER NOT NULL,
+    area_width INTEGER NOT NULL,
     date_recorded DATETIME NOT NULL,
     date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (field_id) REFERENCES Field(id) ON DELETE CASCADE
