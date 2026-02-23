@@ -19,7 +19,7 @@ function onDeviceReady() {
     db.transaction(function(tx) {
         // 1. User Management Tables
         tx.executeSql('CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT, key text, value text, date_updated DATETIME DEFAULT CURRENT_TIMESTAMP)');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS user (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, role TEXT NOT NULL, date_registered DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS user (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, role TEXT NOT NULL, status TEXT NOT NULL, date_registered DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_profile (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, email TEXT, contact INTEGER, address TEXT, picture TEXT, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(user_id) REFERENCES user(id))');
         // 2. Farm Management Tables
         tx.executeSql('CREATE TABLE IF NOT EXISTS Field (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, field_name TEXT NOT NULL, area_height INTEGER NOT NULL, area_width INTEGER NOT NULL, location TEXT NOT NULL, soil_type TEXT NOT NULL, tenure_type TEXT NOT NULL, date_recorded DATETIME NOT NULL, date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(user_id) REFERENCES user(id))');

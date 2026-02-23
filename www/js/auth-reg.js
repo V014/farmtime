@@ -17,8 +17,8 @@ function handleLogin() {
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM user WHERE username=? AND password=?', [user, pass], function(tx, results) {
             if (results.rows.length > 0) {
-                // alert("Login Successful!");
                 window.location.href = "../farmer/index.html"; // Move to the next page
+                tx.executeSql('UPDATE user SET status = ? WHERE id = ?', ['online', results.rows.item(0).id]);
             } else {
                 alert("Invalid username or password.");
             }
@@ -36,7 +36,7 @@ function handleSignup() {
 
     if (pass == passConfirm) {
         db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO user (username, password, role, date_registered) VALUES (?, ?, ?, ?)', [user, pass, 'farmer', now], function(tx, res) {
+        tx.executeSql('INSERT INTO user (username, password, role, status, date_registered) VALUES (?, ?, ?, ?, ?)', [user, pass, 'farmer', 'online', now], function(tx, res) {
             const userId = res.insertId;
             tx.executeSql('INSERT INTO user_profile (user_id, contact, address, date_updated) VALUES (?, ?, ?, ?)', [userId, contact, address, now], function(tx, res2) {
                 // alert("Signup successful! User ID: " + userId);

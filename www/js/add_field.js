@@ -23,19 +23,22 @@ function addField() {
     } else {
         db.transaction(function(tx) {
             try {
-                tx.executeSql(
-                    'INSERT INTO field (field_name, area_height, area_width, soil_type, tenure_type, location, date_updated, date_recorded) ' +
-                    'VALUES (?,?,?,?,?,?,?,?)',
-                    [field_name, area_height, area_width, soil_type, tenure_type, location,
-                    new Date().toISOString(), new Date().toISOString()],
+                tx.executeSql('SELECT id FROM user LIMIT 1', [], function(tx, res) {
+                    const userId = res.rows.length > 0 ? res.rows.item(0).id : null;
+                    tx.executeSql(
+                        'INSERT INTO field (user_id, field_name, area_height, area_width, soil_type, tenure_type, location, date_updated, date_recorded) ' +
+                        'VALUES (?,?,?,?,?,?,?,?)',
+                        [userId, field_name, area_height, area_width, soil_type, tenure_type, location,
+                        new Date().toISOString(), new Date().toISOString()],
                     function(tx, res) {
                         alert("Field added successfully!");
                         window.location.href = "../farmer/field.html";
                     });
+                });
             } catch (error) {
                 alert("Error adding field: " + error.message);
                 window.location.href = "../farmer/add_field.html";
             }
         });
-    }
+    };
 }
