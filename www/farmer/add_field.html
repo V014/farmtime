@@ -54,88 +54,25 @@
                         <!-- form -->
                         <div class="card mb-4">
                             <div class="card-body">
-                                <b>To add a crop variety, fill in all the fields below.</b>
+                                <b>To add a field, fill in all the fields below.</b>
                                 <div class="form-group mb-2">
                                     <label for="field_name">Field name</label>
                                     <input type="text" id="field_name" class="form-control" placeholder="e.g. Nancholi" required>
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <label for="area_size">Area size</label>
-                                    <input type="text" id="area_size" class="form-control" placeholder="e.g. 423-Kanyani" required>
+                                    <label for="area_height">Area height (Metres)</label>
+                                    <input type="number" id="area_height" class="form-control" placeholder="e.g. 50" required>
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <label for="availability">Availability</label>
-                                    <select id="availability" class="form-control">
-                                        <option value="unspecified">Unspecified</option>
-                                        <option value="available">Available</option>
-                                        <option value="unavailable">Out of stock</option>
-                                    </select>
+                                    <label for="area_height">Area width (Metres)</label>
+                                    <input type="number" id="area_width" class="form-control" placeholder="e.g. 50" required>
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <label for="pH_requirement">pH Minimum</label>
-                                    <input type="number" id="pH_min" class="form-control" placeholder="e.g. 5.5" required>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="pH_requirement_min">pH Maximum</label>
-                                    <input type="number" id="pH_max" class="form-control" placeholder="e.g. 6.5" required>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="temprerature_min">Temperature Minimum (Celsius)</label>
-                                    <input type="number" id="temp_min" class="form-control" placeholder="e.g. 25" required>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="temperature_max">Temperature Maximum (Celsius)</label>
-                                    <input type="number" id="temp_max" class="form-control" placeholder="e.g. 27" required>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="rainfall_min">Rainfall Minimum (mm)</label>
-                                    <input type="number" id="rainfall_min" class="form-control" placeholder="e.g. 300" required>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="rainfall_max">Rainfall Maximum (mm)</label>
-                                    <input type="number" id="rainfall_max" class="form-control" placeholder="e.g. 500" required>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="season_requirement">Season requirement</label>
-                                    <select id="season_requirement" class="form-control">
-                                        <option value="unspecified">Unspecified</option>
-                                        <option value="rainy">Rainy</option>
-                                        <option value="dry">Dry</option>
-                                        <option value="all">All seasons</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="yield_estimate">Yield estimates (50kg bags)</label>
-                                    <input type="number" id="yield_estimate" class="form-control" placeholder="e.g. 500" required>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="yield_unit">Yield unit</label>
-                                    <select id="yield_unit" class="form-control">
-                                        <option value="unspecified">Unspecified</option>
-                                        <option value="hector">Bags/hector</option>
-                                        <option value="acre">Bags/acre</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="common_pests">Common pests</label>
-                                    <textarea id="common_pests" rows="3" class="form-control" placeholder="e.g. Army worms, weevils"></textarea>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="common_diseases">Common diseases</label>
-                                    <textarea id="common_diseases" rows="3" class="form-control" placeholder="e.g. Blight, rust"></textarea>
+                                    <label for="location">Location</label>
+                                    <input type="text" id="location" class="form-control" placeholder="e.g gps coordinates" required>
                                 </div>
 
                                 <div class="form-group mb-2">
@@ -149,52 +86,16 @@
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <label for="fertilizer_growing">Fertilizer growing</label>
-                                    <select id="fertilizer_growing" class="form-control">
-                                        <option value="unspecified">Unspecified</option>
-                                        <option value="NPK">NPK</option>
-                                        <option value="DAP">DAP</option>
-                                        <option value="compost">Compost</option>
+                                    <label for="tenure_type">Tenure type</label>
+                                    <select id="tenure_type" class="form-control">
+                                        <option value="Unspecified">Unspecified</option>
+                                        <option value="personal">Personal</option>
+                                        <option value="rented">Rented</option>
                                     </select>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="growth_days">Growth fertilizer applied (days)</label>
-                                    <input type="number" id="growth_days" class="form-control" placeholder="e.g. 7">
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="fertilizer_production">Fertilizer production</label>
-                                    <select id="fertilizer_production" class="form-control">
-                                        <option value="unspecified">Unspecified</option>
-                                        <option value="urea">Urea</option>
-                                        <option value="CAN">CAN</option>
-                                        <option value="compost">Compost</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="production_days">Production fertilizer applied (days)</label>
-                                    <input type="number" id="production_days" class="form-control" placeholder="e.g. 21">
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="irrigation_needs">Irrigation needs</label>
-                                    <select id="irrigation_needs" class="form-control">
-                                        <option value="unspecified">Unspecified</option>
-                                        <option value="low">Low</option>
-                                        <option value="medium">Medium</option>
-                                        <option value="high">High</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label for="planting_distance">Planting distance (cm)</label>
-                                    <input type="number" id="planting_distance" class="form-control" placeholder="e.g. 30">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="button" id="addFieldBtn" class="btn btn-primary mb-2" value="Add variety">
+                                    <input type="button" id="addFieldBtn" class="btn btn-primary mb-2" value="Add field">
                                 </div>
                             </div>
                         </div>
@@ -208,7 +109,7 @@
         <script src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/connection.js"></script>
         <script src="../js/scripts.js"></script>
-        <script src="../js/add_crop_variety.js"></script>
+        <script src="../js/add_field.js"></script>
         <script src="../js/common.js"></script>
         <script src="../js/bootstrap.bundle.min.js"></script>
         <script src="../cordova.js"></script>
