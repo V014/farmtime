@@ -15,6 +15,8 @@ function addField() {
     const soil_type = document.getElementById('soil_type').value;
     const tenure_type = document.getElementById('tenure_type').value;
     const location = document.getElementById('location').value;
+    const date_updated = new Date().toISOString();
+    const date_recorded = new Date().toISOString();
 
     // if above fields are empty, show error and return
     if (!field_name || isNaN(area_height) || isNaN(area_width) || !soil_type || !tenure_type || !location) {
@@ -22,23 +24,22 @@ function addField() {
         return;
     } else {
         db.transaction(function(tx) {
-            try {
-                tx.executeSql('SELECT id FROM user LIMIT 1', [], function(tx, res) {
-                    const userId = res.rows.length > 0 ? res.rows.item(0).id : null;
-                    tx.executeSql(
-                        'INSERT INTO field (user_id, field_name, area_height, area_width, soil_type, tenure_type, location, date_updated, date_recorded) ' +
-                        'VALUES (?,?,?,?,?,?,?,?)',
-                        [userId, field_name, area_height, area_width, soil_type, tenure_type, location,
-                        new Date().toISOString(), new Date().toISOString()],
-                    function(tx, res) {
-                        alert("Field added successfully!");
-                        window.location.href = "../farmer/field.html";
-                    });
+            tx.executeSql('SELECT id FROM user WHERE status = "online"', [], function(tx, res) {
+                const userId = res.rows.length > 0 ? res.rows.item(0).id : null;
+                tx.executeSql(
+                    'INSERT INTO field (user_id, field_name, area_height, area_width, soil_type, tenure_type, location, date_updated, date_recorded) ' +
+                    'VALUES (?,?,?,?,?,?,?,?,?)',
+                    [userId, field_name, area_height, area_width, soil_type, tenure_type, location, date_updated, date_recorded],
+                function(tx, res) {
+                    alert("Field added successfully!");
+                    window.location.href = "../farmer/field.html";
                 });
-            } catch (error) {
-                alert("Error adding field: " + error.message);
-                window.location.href = "../farmer/add_field.html";
-            }
+            }, function(tx, err) {
+                alert('Error adding field: ' + err.message);
+            });
+        }, function(tx, err) {
+            alert('Error in transaction: ' + err.message);
+            window.location.href = "../farmer/add_field.html";
         });
-    };
+    }
 }
