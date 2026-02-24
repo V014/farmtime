@@ -12,12 +12,12 @@ function onDeviceReady() {
 // list user's fields in the dropdown
 function listFields() {
     db.transaction(function(tx) {
-        tx.executeSql('SELECT id, name FROM field WHERE user_id = (SELECT id FROM user WHERE status = "online")', [], function(tx, res) {
+        tx.executeSql('SELECT id, field_name FROM field WHERE user_id = (SELECT id FROM user WHERE status = "online")', [], function(tx, res) {
             const fieldSelect = document.getElementById('field');
             for (let i = 0; i < res.rows.length; i++) {
                 const option = document.createElement('option');
                 option.value = res.rows.item(i).id;
-                option.textContent = res.rows.item(i).name;
+                option.textContent = res.rows.item(i).field_name;
                 fieldSelect.appendChild(option);
             }
         }, function(tx, err) {

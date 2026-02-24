@@ -57,7 +57,7 @@ $(document).ready(function() {
                 <div class="collapse" id="collapseLands" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="field.html">Fields</a>
-                        <a class="nav-link" href="#">Plots</a>
+                        <a class="nav-link" href="plots.html">Plots</a>
                     </nav>
                 </div>
 
