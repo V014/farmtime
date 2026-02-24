@@ -44,7 +44,7 @@ function addField() {
                 const userId = res.rows.length > 0 ? res.rows.item(0).id : null;
                 tx.executeSql('SELECT id FROM field WHERE user_id = ? AND id = ?', [userId, field_id], function(tx, res) {
                     if (res.rows.length > 0) {
-                        tx.executeSql('INSERT INTO plot (name, area_height, area_width, field_id, date_updated, date_recorded) VALUES (?, ?, ?, ?, ?, ?)', [plot_name, area_height, area_width, field_id, date_updated, date_recorded], function(tx, res) {
+                        tx.executeSql('INSERT INTO plot (plot_name, area_height, area_width, field_id, date_updated, date_recorded) VALUES (?, ?, ?, ?, ?, ?)', [plot_name, area_height, area_width, field_id, date_updated, date_recorded], function(tx, res) {
                             alert("Plot added successfully.");
                             window.location.href = "../farmer/plots.html";
                         }, function(tx, err) {
