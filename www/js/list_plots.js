@@ -2,7 +2,7 @@ onload = listPlots;
 
 function listPlots() {
     db.transaction(function(tx) {
-        tx.executeSql('SELECT p.id AS id, p.plot_name AS plot_name, p.area_height AS area_height, p.area_width AS area_width, f.field_name AS field_name FROM plot p INNER JOIN field f ON p.field_id = f.id WHERE user_id = (SELECT id FROM user WHERE status = "online")', [], function(tx, res) {
+        tx.executeSql('SELECT p.id AS id, p.plot_name AS plot_name, p.area_height AS area_height, p.area_width AS area_width, f.field_name AS field_name FROM plot p INNER JOIN field f ON p.field_id = f.id WHERE f.user_id = (SELECT id FROM user WHERE status = "online")', [], function(tx, res) {
             const tbody = document.getElementById('plots_table').getElementsByTagName('tbody')[0];
             for (let i = 0; i < res.rows.length; i++) {
                 const cv = res.rows.item(i);

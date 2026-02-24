@@ -25,15 +25,40 @@ function onDeviceReady() {
 
 function loadPlotData(plotId) {
     db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM plot WHERE id = ?', [plotId], function(tx, res) {
+        tx.executeSql('SELECT p.id AS id, p.plot_name AS plot_name, p.area_height AS area_height, p.area_width AS area_width, f.field_name AS field_name FROM field f INNER JOIN plot p ON p.field_id = f.id WHERE p.id = ?', [plotId], function(tx, res) {
             if (res.rows.length > 0) {
                 const plot = res.rows.item(0);
+                const currentFieldName = plot.field_name;
                 
-                // Populate form fields with existing data
-                document.getElementById('plot_name').value = plot.plot_name || '';
-                document.getElementById('area_height').value = plot.area_height || '';
-                document.getElementById('area_width').value = plot.area_width || '';
-                document.getElementById('field').value = plot.field_id || 'unspecified';
+                // Load all fields for the user
+                tx.executeSql('SELECT id, field_name FROM field WHERE user_id = (SELECT id FROM user WHERE status = "online")', [], function(tx, fieldRes) {
+                    const fieldSelect = document.getElementById('field');
+                    
+                    // Clear existing options except "Unspecified"
+                    while (fieldSelect.options.length > 1) {
+                        fieldSelect.remove(1);
+                    }
+                    
+                    // Add all available fields and select the current one
+                    for (let i = 0; i < fieldRes.rows.length; i++) {
+                        const field = fieldRes.rows.item(i);
+                        const option = document.createElement('option');
+                        option.value = field.id;
+                        option.textContent = field.field_name;
+                        
+                        // Mark the previously selected field
+                        if (field.field_name === currentFieldName) {
+                            option.selected = true;
+                        }
+                        
+                        fieldSelect.appendChild(option);
+                    }
+                    
+                    // Populate other form fields with existing data
+                    document.getElementById('plot_name').value = plot.plot_name || '';
+                    document.getElementById('area_height').value = plot.area_height || '';
+                    document.getElementById('area_width').value = plot.area_width || '';
+                });
             } else {
                 alert('Plot not found');
                 window.location.href = '../farmer/plots.html';
