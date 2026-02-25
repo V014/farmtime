@@ -46,6 +46,7 @@ $(document).ready(function() {
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="crops.html">Active crops</a>
                         <a class="nav-link" href="crop_variety.html">Crop variety</a>
+                        <a class="nav-link" href="supplier.html">Supplier</a>
                     </nav>
                 </div>
 
