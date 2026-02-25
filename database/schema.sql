@@ -85,8 +85,6 @@ CREATE TABLE crop (
     plot_id INTEGER NOT NULL,
     crop_variety_id INTEGER NOT NULL,
     supplier_id INTEGER,
-    crop_type TEXT NOT NULL, -- enum
-    intercropping TEXT NOT NULL, -- enum
     batch_id TEXT,
     growth_stage TEXT NOT NULL, -- enum
     status TEXT NOT NULL, -- enum

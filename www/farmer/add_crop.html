@@ -7,7 +7,6 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Add crop</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -16,7 +15,7 @@
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" id="sidebarToggle" href="#">FarmTime</a>
             <!-- Sidebar Toggle-->
-            <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button> -->
+            <!-- <button type="button" class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button> -->
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -32,7 +31,7 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="#!" onclick="logout()">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -47,46 +46,70 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tables</h1>
+                        <h1 class="mt-4">Add crop</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="crops.html">Crops</a></li>
                         </ol>
                         <!-- form -->
                         <div class="card mb-4">
                             <div class="card-body">
                                 <b>To add a crop, fill in all the fields below.</b>
-                                <form>
-                                    <div class="form-group mb-2">
-                                        <label for="crop_type">Crop type</label>
-                                        <input type="text" id="crop_type" class="form-control" placeholder="Crop type" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="crop_variety">Crop variety</label>
+                                    <select id="crop_variety" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <!-- user crop varieties appear here -->
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="crop_variety">Crop variety</label>
-                                        <input type="text" id="crop_variety" class="form-control" placeholder="Crop variety" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="plot">Plot</label>
+                                    <select id="plot" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <!-- user plots appear here -->
+                                    </select>
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="upload">Upload Movie</label>
-                                        <input id="upload" name="upload" type="file" />
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="supplier">Supplier</label>
+                                    <select id="supplier" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <!-- user suppliers appear here -->
+                                    </select>
+                                </div>
 
-                                    <!-- Hidden field where FilePond will store file_id -->
-                                    <input type="hidden" name="file_id" id="file_id">
+                                <div class="form-group mb-2">
+                                    <label for="batch_number">Batch number</label>
+                                    <input type="text" id="batch_number" class="form-control" placeholder="e.g. bt001">
+                                </div>
 
-                                    <div class="form-group mb-2">
-                                        <label for="poster">Upload poster</label>
-                                        <input name="poster" type="file" class="form-control" id="poster" accept="image/*" required>
-                                    </div>
+                                <div class="form-group mb-2">
+                                    <label for="gowth_stage">Growth stage</label>
+                                    <select id="growth_stage" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <option value="seedling">Seedling</option>
+                                        <option value="shooting">Shooting</option>
+                                        <option value="flowering">Flowering</option>
+                                        <option value="fruiting">Fruiting</option>
+                                        <option value="harvested">Harvested</option>
+                                    </select>
+                                </div>
 
-                                    <p>Click upload to finalize your actions.</p>
+                                <div class="form-group mb-2">
+                                    <label for="status">Status</label>
+                                    <select id="status" class="form-control">
+                                        <option value="unspecified">Unspecified</option>
+                                        <option value="active">Active</option>
+                                        <option value="dormant">Dormant</option>
+                                        <option value="failed">Failed</option>
+                                        <option value="archived">Archived</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group">
-                                        <button id="addCropBtn" class="btn btn-primary mb-2">Add crop</button>
-                                    </div>
-                                </form>
-
+                                <div class="form-group">
+                                    <input type="button" id="addCropBtn" class="btn btn-primary mb-2" value="Add crop">
+                                </div>
                             </div>
                         </div>
                         <!-- form -->
@@ -97,13 +120,11 @@
             </div>
         </div>
         <script src="../js/jquery-3.6.0.min.js"></script>
-        <script src="../js/scripts.js"></script>
         <script src="../js/connection.js"></script>
-        <script src="../js/auth-reg.js"></script>
+        <script src="../js/scripts.js"></script>
+        <script src="../js/add_plot.js"></script>
         <script src="../js/common.js"></script>
+        <script src="../js/bootstrap.bundle.min.js"></script>
         <script src="../cordova.js"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     </body>
 </html>
