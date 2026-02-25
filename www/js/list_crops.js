@@ -1,0 +1,26 @@
+onload = listCrops;
+
+function listCrops() {
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM crop', [], function(tx, res) {
+            const tbody = document.getElementById('crops_table').getElementsByTagName('tbody')[0];
+            for (let i = 0; i < res.rows.length; i++) {
+                const cv = res.rows.item(i);
+                const tr = document.createElement('tr');
+                tr.dataset.cropId = cv.id;           // note: use `id`, not crop_id
+                tr.innerHTML = `
+                    <td>${cv.crop_name}</td>
+                    <td>${cv.status}</td>
+                    <td>${cv.growth_stage}</td>
+                    <td><button class="btn" onclick="window.location.href='../farmer/edit_crop.html?crop_id=${cv.id}'"><img src="../icons/pencil-square.svg" alt="Edit" width="16" height="16"></button></td>
+                    <td><button class="btn" onclick="deleteCrop(${cv.id})"><img src="../icons/trash3.svg" alt="Delete" width="16" height="16"></button></td>
+                `;
+                tbody.appendChild(tr);
+            }
+        }, function(tx, err) {
+            alert('Error reading crops: ' + err.message);
+        });
+    }, function(txErr) {
+        alert('transaction error: ' + txErr);
+    });
+}

@@ -12,14 +12,14 @@ function onDeviceReady() {
 function deletePlot(plotId) {
     // Confirm deletion with the user
     if (!confirm("Are you sure you want to delete this plot? This action cannot be undone.")) {
-        window.location.href = '../farmer/plot.html';
+        window.location.href = '../farmer/plots.html';
         return;
     } else {
         // Delete the plot from the database
         db.transaction(function(tx) {
             tx.executeSql('DELETE FROM plot WHERE id = ?', [plotId], function(tx, res) {
                 alert("Plot deleted successfully!");
-                window.location.href = "../farmer/plot.html";
+                window.location.href = "../farmer/plots.html";
             }, function(tx, err) {
                 alert("Error deleting plot: " + err.message);
             });
