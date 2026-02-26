@@ -28,7 +28,7 @@ function loadPlotData(plotId) {
         tx.executeSql('SELECT p.plot_name, s.supplier_name, cv.crop_variety, c.batch_id, c.growth_stage, c.status FROM crop c INNER JOIN plot p ON c.plot_id = p.id INNER JOIN supplier s ON c.supplier_id = s.id INNER JOIN crop_variety cv ON c.crop_variety_id = cv.id WHERE c.id = ?', [plotId], function(tx, res) {
             if (res.rows.length > 0) {
                 const crop = res.rows.item(0);
-                const currentFieldName = plot.field_name;
+                const currentCropName = crop.crop_name;
                 
                 // Load all fields for the user
                 tx.executeSql('SELECT id, field_name FROM field WHERE user_id = (SELECT id FROM user WHERE status = "online")', [], function(tx, fieldRes) {
