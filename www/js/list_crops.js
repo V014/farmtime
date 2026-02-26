@@ -2,7 +2,7 @@ onload = listCrops;
 
 function listCrops() {
     db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM crop', [], function(tx, res) {
+        tx.executeSql('SELECT crop_name, status, growth_stage FROM crop', [], function(tx, res) {
             const tbody = document.getElementById('crops_table').getElementsByTagName('tbody')[0];
             for (let i = 0; i < res.rows.length; i++) {
                 const cv = res.rows.item(i);
