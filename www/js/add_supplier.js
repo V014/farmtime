@@ -8,7 +8,7 @@ function onDeviceReady() {
     }
 }
 
-function addField() {
+function addSupplier() {
     const supplier_name = document.getElementById('supplier_name').value;
     const contact = parseFloat(document.getElementById('contact').value);
     const address = document.getElementById('address').value;
