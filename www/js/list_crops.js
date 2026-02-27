@@ -2,7 +2,7 @@ onload = listCrops;
 
 function listCrops() {
     db.transaction(function(tx) {
-        tx.executeSql('SELECT crop_name, status, growth_stage FROM crop', [], function(tx, res) {
+        tx.executeSql('SELECT cv.crop_name, cv.crop_variety, c.batch_id, c.growth_stage, c.status FROM crop c INNER JOIN crop_variety cv ON c.crop_variety_id = cv.id WHERE c.id = (SELECT id FROM user WHERE status = "online")', [], function(tx, res) {
             const tbody = document.getElementById('crops_table').getElementsByTagName('tbody')[0];
             for (let i = 0; i < res.rows.length; i++) {
                 const cv = res.rows.item(i);
@@ -10,6 +10,8 @@ function listCrops() {
                 tr.dataset.cropId = cv.id;           // note: use `id`, not crop_id
                 tr.innerHTML = `
                     <td>${cv.crop_name}</td>
+                    <td>${cv.crop_variety}</td>
+                    <td>${cv.batch_id}</td>
                     <td>${cv.status}</td>
                     <td>${cv.growth_stage}</td>
                     <td><button class="btn" onclick="window.location.href='../farmer/edit_crop.html?crop_id=${cv.id}'"><img src="../icons/pencil-square.svg" alt="Edit" width="16" height="16"></button></td>

@@ -61,7 +61,7 @@ function updateSupplier() {
                 'UPDATE supplier SET supplier_name=?, contact=?, address=?, date_updated=? WHERE id=?',
                 [supplier_name, contact, address, new Date().toISOString(), currentSupplierId],
                 function(tx, res) {
-                    alert("Supplier updated successfully!" + res.rowsAffected + " row(s) affected.");
+                    alert("Supplier updated successfully!");
                     window.location.href = "../farmer/supplier.html";
                 }
             );
