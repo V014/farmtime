@@ -58,10 +58,10 @@ function updateSupplier() {
     db.transaction(function(tx) {
         try {
             tx.executeSql(
-                'UPDATE field SET supplier_name=?, contact=?, address=?, date_updated=? WHERE id=?',
+                'UPDATE supplier SET supplier_name=?, contact=?, address=?, date_updated=? WHERE id=?',
                 [supplier_name, contact, address, new Date().toISOString(), currentSupplierId],
                 function(tx, res) {
-                    alert("Supplier updated successfully!");
+                    alert("Supplier updated successfully!" + res.rowsAffected + " row(s) affected.");
                     window.location.href = "../farmer/supplier.html";
                 }
             );
