@@ -6,6 +6,30 @@ function onDeviceReady() {
             addCrop();
         });
     }
+    listData();
+}
+
+// list user's crop varieties, plots and suppliers in the dropdown
+function listData() {
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT p.plot_name, s.supplier_name, cv.crop_variety, c.batch_id, c.growth_stage, c.status FROM crop c INNER JOIN plot p ON c.plot_id = p.id INNER JOIN supplier s ON c.supplier_id = s.id INNER JOIN crop_variety cv ON c.crop_variety_id = cv.id WHERE c.user_id = (SELECT id FROM user WHERE status = "online")', [], function(tx, res) {
+            const cropVarietySelect = document.getElementById('crop_variety');
+            const supplierNameSelect = document.getElementById('supplier');
+            const plotNameSelect = document.getElementById('plot');
+            for (let i = 0; i < res.rows.length; i++) {
+                const option = document.createElement('option');
+                option.value = res.rows.item(i).id;
+                option.textContent = res.rows.item(i).crop_variety;
+                option.textContent = res.rows.item(i).supplier_name;
+                option.textContent = res.rows.item(i).plot_name;
+                cropVarietySelect.appendChild(option);
+                supplierNameSelect.appendChild(option);
+                plotNameSelect.appendChild(option);
+            }
+        }, function(tx, err) {
+            alert('Error listing user data: ' + err.message);
+        });
+    });
 }
 
 function addCrop() {
