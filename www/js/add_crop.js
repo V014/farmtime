@@ -71,19 +71,14 @@ function addCrop() {
         return;
     } else {
         db.transaction(function(tx) {
-            tx.executeSql('SELECT id FROM user WHERE status = "online"', [], function(tx, res) {
-                const userId = res.rows.length > 0 ? res.rows.item(0).id : null;
-                tx.executeSql(
-                    'INSERT INTO crop (plot_id, supplier_id, crop_variety_id, batch_number, growth_stage, status, date_updated, date_recorded) ' +
-                    'VALUES (?,?,?,?,?,?,?,?)',
-                    [userId, plot_id, supplier_id, crop_variety_id, batch_number, growth_stage, status, date_updated, date_recorded],
-                function(tx, res) {
-                    alert("Crop added successfully!");
-                    window.location.href = "../farmer/crops.html";
-                });
-            }, function(tx, err) {
-                alert('Error adding crop: ' + err.message);
-            });
+        tx.executeSql(
+                'INSERT INTO crop (plot_id, supplier_id, crop_variety_id, batch_number, growth_stage, status, date_updated, date_recorded) ' +
+                'VALUES (?,?,?,?,?,?,?,?)',
+                [plot_id, supplier_id, crop_variety_id, batch_number, growth_stage, status, date_updated, date_recorded],
+            function(tx, res) {
+                alert("Crop added successfully!");
+                window.location.href = "../farmer/crops.html";
+            })
         }, function(tx, err) {
             alert('Error in transaction: ' + err.message);
             window.location.href = "../farmer/add_crop.html";
